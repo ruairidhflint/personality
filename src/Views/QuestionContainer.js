@@ -1,70 +1,82 @@
-import styled from 'styled-components';
+import Question from '../Components/Question';
+import Progress from '../Components/Progress';
 
 const QuestionContainer = () => {
   return (
-    <StyledQuestionContainer>
-      <StyledQuestion>{testText.question}</StyledQuestion>
-      <StyledAnswerContainer>
-        <button>{testText.answers[0]}</button>
-        <span>or</span>
-        <button>{testText.answers[1]}</button>
-      </StyledAnswerContainer>
-    </StyledQuestionContainer>
+    <>
+      <Question
+        number={1}
+        question={testText.question}
+        answers={testText.answers}
+      />
+      <Progress />
+    </>
   );
 };
-
-const StyledQuestionContainer = styled.div`
-  width: 100%;
-  height: 90vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-
-const StyledQuestion = styled.h3`
-  font-size: 3rem;
-  margin: 2rem;
-`;
-
-const StyledAnswerContainer = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  margin-top: 1.5rem;
-
-  span {
-    color: ${(props) => props.theme.darkgrey};
-    font-size: 1.5rem;
-    width: 7%;
-    text-align: center;
-  }
-
-  button {
-    background-color: white;
-    border: none;
-    font-size: 2.2rem;
-    color: ${(props) => props.theme.mediumgrey};
-    cursor: pointer;
-
-    :hover {
-      color: ${(props) => props.theme.orange};
-    }
-
-    :focus {
-      outline: none;
-      text-decoration: underline;
-    }
-  }
-`;
 
 export default QuestionContainer;
 
 const testText = {
-  question: 'At a party do you...',
-  answers: [
-    'interact with many, including strangers?',
-    'interact with a few, known to you?',
-  ],
+  number: 9,
+  question: 'Are you more attracted to...',
+  answers: ['sensible people?', 'imaginative people?'],
 };
+
+const questions = [
+  {
+    number: 1,
+    question: 'At a party do you...',
+    answers: [
+      'interact with many, including strangers?',
+      'interact with a few, known to you?',
+    ],
+  },
+  {
+    number: 2,
+    question: 'Are you more...',
+    answers: ['realistic than speculative?', 'speculative than realistic?'],
+  },
+  {
+    number: 3,
+    question: 'Is it worse to...',
+    answers: ['have your "head in the clouds"?', 'be "in a rut"?'],
+  },
+  {
+    number: 4,
+    question: 'Are you more impressed by...',
+    answers: ['principles?', 'gut emotions?'],
+  },
+  {
+    number: 5,
+    question: 'Are you more drawn toward the...',
+    answers: ['convincing?', 'touching?'],
+  },
+  {
+    number: 6,
+    question: 'Do you prefer to work...',
+    answers: ['to deadlines?', 'just "whenever"?'],
+  },
+  {
+    number: 7,
+    question: 'Do you tend to choose...',
+    answers: ['rather carefully?', 'somewhat impulsively?'],
+  },
+  {
+    number: 8,
+    question: 'At parties do you...',
+    answers: [
+      'stay late, with increasing energy?',
+      'leave early, with decreased energy?',
+    ],
+  },
+  {
+    number: 9,
+    question: 'Are you more attracted to...',
+    answers: ['sensible people?', 'imaginative people?'],
+  },
+  {
+    number: 10,
+    question: 'Are you more interested in...',
+    answers: ['what is actual?', 'what is possible?'],
+  },
+];

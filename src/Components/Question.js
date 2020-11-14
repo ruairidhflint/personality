@@ -6,21 +6,20 @@ const Question = ({ number, question, answers, setPosition }) => {
     config: { duration: 500 },
     opacity: 1,
     from: { opacity: 0 },
-    // reset: true,
   });
 
-  const logAnswer = (val) => {
+  const logAnswer = (e, val) => {
     setPosition((prev) => prev + 1);
-    console.log(val);
+    e.currentTarget.blur();
   };
 
   return (
     <StyledQuestionContainer style={props}>
       <StyledQuestion>{question}</StyledQuestion>
       <StyledAnswerContainer>
-        <button onClick={() => logAnswer('a')}>{answers[0]}</button>
+        <button onClick={(e) => logAnswer(e, 'a')}>{answers[0]}</button>
         <span>or</span>
-        <button onClick={() => logAnswer('b')}>{answers[1]}</button>
+        <button onClick={(e) => logAnswer(e, 'b')}>{answers[1]}</button>
       </StyledAnswerContainer>
     </StyledQuestionContainer>
   );

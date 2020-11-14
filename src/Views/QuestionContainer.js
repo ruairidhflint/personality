@@ -19,12 +19,6 @@ const QuestionContainer = () => {
 
 export default QuestionContainer;
 
-const testText = {
-  number: 9,
-  question: 'Are you more attracted to...',
-  answers: ['sensible people?', 'imaginative people?'],
-};
-
 const questions = [
   {
     number: 1,

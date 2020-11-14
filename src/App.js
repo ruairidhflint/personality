@@ -4,14 +4,14 @@ import GlobalStyle from './Styles/cssReset';
 import { useState } from 'react';
 import { Theme } from './Styles/themes';
 import { AppContainer } from './Styles/AppContainer';
-
 import { AnswersContext } from './Context/AnswersContext';
-
-import TitlePage from './Views/TitlePage';
-import Introduction from './Views/Introduction';
-import Instructions from './Views/Instructions';
-import QuestionContainer from './Views/QuestionContainer';
-import TestFile from './Views/TestFile';
+import {
+  TitlePage,
+  Introduction,
+  Instructions,
+  QuestionContainer,
+  TestFile,
+} from './Views/index';
 
 function App() {
   const [userAnswers, setUserAnswers] = useState({});

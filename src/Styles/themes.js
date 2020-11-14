@@ -1,8 +1,8 @@
 export const Theme = {
-  darkgrey: '#343838',
+  orange: '#FF9900',
   white: '#fff',
-  blue1: '#005F6B',
-  blue2: '#008C9E',
-  blue3: '#00B4CC',
-  blue4: '#00DFFC',
+  darkgrey: '#424242',
+  lightgrey: '#E9E9E9',
+  mediumgrey: '#BCBCBC',
+  blue: '#3299BB',
 };

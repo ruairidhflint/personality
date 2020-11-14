@@ -33,16 +33,14 @@ footer, header, hgroup, menu, nav, section {
 	display: block; 
 }
 :root {
-    font-size: 67.5%;
+    font-size: 62.5%;
 }
 body {
-	font-size: 67.5%;
+	font-size: 62.5%;
     line-height: 1;
     box-sizing: border-box;
     min-height: 100vh;
-    background-color: ${(props) => props.theme.background};
-    color: ${(props) => props.theme.text};
-    font-family: system-ui;
+	font-family: 'Text Me One', sans-serif;
 }
 ol, ul {
 	list-style: none;

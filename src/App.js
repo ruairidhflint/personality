@@ -1,11 +1,13 @@
 import { ThemeProvider } from 'styled-components';
 import GlobalStyle from './Styles/cssReset';
-import { theme } from './Styles/themes';
+import { Theme } from './Styles/themes';
+import { AppContainer } from './Styles/appStyle';
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={Theme}>
       <GlobalStyle />
+      <AppContainer></AppContainer>
     </ThemeProvider>
   );
 }

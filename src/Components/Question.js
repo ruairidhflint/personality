@@ -1,13 +1,26 @@
 import styled from 'styled-components';
+import { useSpring, animated } from 'react-spring';
 
-const Question = ({ number, question, answers }) => {
+const Question = ({ number, question, answers, setPosition }) => {
+  const props = useSpring({
+    config: { duration: 500 },
+    opacity: 1,
+    from: { opacity: 0 },
+    reset: true
+  });
+
+  const logAnswer = (val) => {
+    setPosition((prev) => prev + 1);
+    console.log(val);
+  };
+
   return (
-    <StyledQuestionContainer>
+    <StyledQuestionContainer style={props}>
       <StyledQuestion>{question}</StyledQuestion>
       <StyledAnswerContainer>
-        <button>{answers[0]}</button>
+        <button onClick={() => logAnswer('a')}>{answers[0]}</button>
         <span>or</span>
-        <button>{answers[1]}</button>
+        <button onClick={() => logAnswer('b')}>{answers[1]}</button>
       </StyledAnswerContainer>
     </StyledQuestionContainer>
   );
@@ -15,7 +28,7 @@ const Question = ({ number, question, answers }) => {
 
 export default Question;
 
-const StyledQuestionContainer = styled.div`
+const StyledQuestionContainer = styled(animated.div)`
   width: 100%;
   height: 90vh;
   display: flex;
@@ -60,4 +73,3 @@ const StyledAnswerContainer = styled.div`
     }
   }
 `;
-

@@ -1,15 +1,18 @@
+import { useState } from 'react';
 import Question from '../Components/Question';
 import Progress from '../Components/Progress';
 
 const QuestionContainer = () => {
+  const [position, setPosition] = useState(1);
   return (
     <>
       <Question
-        number={1}
-        question={testText.question}
-        answers={testText.answers}
+        number={questions[position - 1].number}
+        question={questions[position - 1].question}
+        answers={questions[position - 1].answers}
+        setPosition={setPosition}
       />
-      <Progress />
+      <Progress position={questions[position - 1].number} />
     </>
   );
 };

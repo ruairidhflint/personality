@@ -2,11 +2,12 @@ import { useState } from 'react';
 import Question from '../Components/Question';
 import Progress from '../Components/Progress';
 
-const QuestionContainer = () => {
+const QuestionContainer = ({ history }) => {
   const [position, setPosition] = useState(1);
   return (
     <>
       <Question
+        history={history}
         number={questions[position - 1].number}
         question={questions[position - 1].question}
         answers={questions[position - 1].answers}

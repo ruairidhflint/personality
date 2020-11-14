@@ -1,7 +1,10 @@
+import { useContext } from 'react';
+import { AnswersContext } from '../Context/AnswersContext';
 import styled from 'styled-components';
 import { useSpring, animated } from 'react-spring';
 
-const Question = ({ number, question, answers, setPosition }) => {
+const Question = ({ number, question, answers, setPosition, history }) => {
+  const { setUserAnswers } = useContext(AnswersContext);
   const props = useSpring({
     config: { duration: 500 },
     opacity: 1,
@@ -9,8 +12,13 @@ const Question = ({ number, question, answers, setPosition }) => {
   });
 
   const logAnswer = (e, val) => {
-    setPosition((prev) => prev + 1);
     e.currentTarget.blur();
+    setUserAnswers((prev) => ({ ...prev, [number]: val }));
+    if (number === 10) {
+      history.push('/test');
+    } else {
+      setPosition((prev) => prev + 1);
+    }
   };
 
   return (

@@ -6,7 +6,7 @@ const Question = ({ number, question, answers, setPosition }) => {
     config: { duration: 500 },
     opacity: 1,
     from: { opacity: 0 },
-    reset: true
+    // reset: true,
   });
 
   const logAnswer = (val) => {
@@ -52,11 +52,12 @@ const StyledAnswerContainer = styled.div`
   span {
     color: ${(props) => props.theme.darkgrey};
     font-size: 1.5rem;
-    width: 7%;
+    width: 8%;
     text-align: center;
   }
 
   button {
+    width: 46%;
     background-color: white;
     border: none;
     font-size: 2.2rem;

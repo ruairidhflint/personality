@@ -29,9 +29,10 @@ const Instructions = () => {
       </StyledInstructionTitle>
       <StyledInstructionContent style={content}>
         <p style={{ marginBottom: '2.5rem' }}>{testText.intro}</p>
-        {testText.intructions.map((item) => {
+        {testText.intructions.map((item, i) => {
           return (
             <p
+              key={i}
               style={{
                 marginBottom: '0.5rem',
                 marginLeft: '5rem',

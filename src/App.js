@@ -5,6 +5,7 @@ import { Theme } from './Styles/themes';
 import { AppContainer } from './Styles/AppContainer';
 
 import TitlePage from './Views/TitlePage';
+import Introduction from './Views/Introduction';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <GlobalStyle />
       <AppContainer>
         <Route exact path="/" component={TitlePage} />
+        <Route path="/introduction" component={Introduction} />
       </AppContainer>
     </ThemeProvider>
   );

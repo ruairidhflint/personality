@@ -8,10 +8,11 @@ const TitlePage = () => {
     opacity: 1,
     from: { opacity: 0 },
   });
+
   return (
     <StyledTitlePage style={props}>
       <h1>Temperament Profiler</h1>
-      <Link to="/helloworld">start</Link>
+      <Link to="/introduction">start</Link>
     </StyledTitlePage>
   );
 };

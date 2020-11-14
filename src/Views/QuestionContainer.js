@@ -1,26 +1,19 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import { useSpring, animated } from 'react-spring';
 
 const QuestionContainer = () => {
-  const title = useSpring({
-    config: { duration: 1500 },
-    opacity: 1,
-    from: { opacity: 0 },
-  });
-
   return (
     <StyledQuestionContainer>
       <StyledQuestion>{testText.question}</StyledQuestion>
       <StyledAnswerContainer>
         <button>{testText.answers[0]}</button>
+        <span>or</span>
         <button>{testText.answers[1]}</button>
       </StyledAnswerContainer>
     </StyledQuestionContainer>
   );
 };
 
-const StyledQuestionContainer = styled(animated.div)`
+const StyledQuestionContainer = styled.div`
   width: 100%;
   height: 90vh;
   display: flex;
@@ -29,31 +22,49 @@ const StyledQuestionContainer = styled(animated.div)`
   align-items: center;
 `;
 
-const StyledQuestion = styled(animated.h3)`
+const StyledQuestion = styled.h3`
   font-size: 3rem;
   margin: 2rem;
 `;
 
-const StyledAnswerContainer = styled(animated.div)`
+const StyledAnswerContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
   margin-top: 1.5rem;
+
+  span {
+    color: ${(props) => props.theme.darkgrey};
+    font-size: 1.5rem;
+    width: 7%;
+    text-align: center;
+  }
 
   button {
     background-color: white;
     border: none;
     font-size: 2.2rem;
     color: ${(props) => props.theme.mediumgrey};
+    cursor: pointer;
+
+    :hover {
+      color: ${(props) => props.theme.orange};
+    }
+
+    :focus {
+      outline: none;
+      text-decoration: underline;
+    }
   }
 `;
 
 export default QuestionContainer;
 
 const testText = {
-  question: 'At a party you...',
+  question: 'At a party do you...',
   answers: [
-    'Interact with many, including strangers',
-    'interact with a few, known to you',
+    'interact with many, including strangers?',
+    'interact with a few, known to you?',
   ],
 };

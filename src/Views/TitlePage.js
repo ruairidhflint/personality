@@ -1,15 +1,22 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import { useSpring, animated } from 'react-spring';
 
 const TitlePage = () => {
+  const props = useSpring({
+    config: { duration: 1000 },
+    opacity: 1,
+    from: { opacity: 0 },
+  });
   return (
-    <StyledTitlePage>
+    <StyledTitlePage style={props}>
       <h1>Temperament Profiler</h1>
-      <a>Start</a>
+      <Link to="/helloworld">start</Link>
     </StyledTitlePage>
   );
 };
 
-const StyledTitlePage = styled.div`
+const StyledTitlePage = styled(animated.div)`
   width: 100%;
   height: 90vh;
   display: flex;
@@ -20,10 +27,16 @@ const StyledTitlePage = styled.div`
   h1 {
     font-size: 5rem;
   }
-    a {
-        font-size: 2.5rem;
-        color: ${(props) => props.theme.orange};
+  a {
+    font-size: 2rem;
+    color: ${(props) => props.theme.orange};
+    margin-top: 1rem;
+    transition: opacity 0.2s ease-in-out;
+    :hover {
+      opacity: 0.6;
+      transition: opacity 0.2s ease-in-out;
     }
+  }
 `;
 
 export default TitlePage;

@@ -40,7 +40,8 @@ body {
     line-height: 1;
     box-sizing: border-box;
     min-height: 100vh;
-	font-family: 'Text Me One', sans-serif;
+	font-family: 'Quicksand', sans-serif;
+	color: ${(props) => props.theme.darkgrey};
 }
 ol, ul {
 	list-style: none;

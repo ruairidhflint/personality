@@ -14,7 +14,7 @@ const Question = ({ number, question, answers, setPosition, history }) => {
   const logAnswer = (e, val) => {
     e.currentTarget.blur();
     setUserAnswers((prev) => ({ ...prev, [number]: val }));
-    if (number === 10) {
+    if (number === 70) {
       history.push('/test');
     } else {
       setPosition((prev) => prev + 1);
@@ -72,7 +72,7 @@ const StyledAnswerContainer = styled.div`
     cursor: pointer;
 
     :hover {
-      color: ${(props) => props.theme.orange};
+      color: ${(props) => props.theme.blue};
     }
 
     :focus {

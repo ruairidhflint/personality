@@ -1,9 +1,11 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { AnswersContext } from '../Context/AnswersContext';
 import styled from 'styled-components';
 import { useSpring, animated } from 'react-spring';
 
 const SelfPerceptionSlider = ({ quadrant, history, setPosition }) => {
   const [value, setValue] = useState(3);
+  const { setUserAnswers } = useContext(AnswersContext);
   const { choices, details } = quadrant;
 
   const title = useSpring({
@@ -16,10 +18,14 @@ const SelfPerceptionSlider = ({ quadrant, history, setPosition }) => {
     setValue(e.target.value);
   };
 
-  const testClick = () => {
-    console.log(value);
-    setValue(3);
-    setPosition((prev) => (prev += 1));
+  const submitAnswer = () => {
+    setUserAnswers((prev) => ({ ...prev, [quadrant.name]: value }));
+    if (quadrant.name === 'selfJP') {
+      history.push('/test');
+    } else {
+      setValue(3);
+      setPosition((prev) => (prev += 1));
+    }
   };
   return (
     <StyledIntroductionContainer style={title}>
@@ -58,7 +64,7 @@ const SelfPerceptionSlider = ({ quadrant, history, setPosition }) => {
       </div>
 
       <StyledIntroButton>
-        <button onClick={testClick}>Next</button>
+        <button onClick={submitAnswer}>Next</button>
       </StyledIntroButton>
     </StyledIntroductionContainer>
   );
@@ -217,11 +223,25 @@ const StyledIntroButton = styled(animated.span)`
   color: ${(props) => props.theme.orange};
   margin-top: 1.5rem;
 
-  a {
+  button {
+    width: 46%;
+    background-color: white;
+    margin-top: 5rem;
+    border: none;
+    font-size: 2.2rem;
+    color: ${(props) => props.theme.blue};
+    cursor: pointer;
+    opacity: 0.6;
     transition: opacity 0.2s ease-in-out;
+
     :hover {
-      opacity: 0.6;
+      opacity: 1;
       transition: opacity 0.2s ease-in-out;
+    }
+
+    :focus {
+      outline: none;
+      text-decoration: underline;
     }
   }
 `;

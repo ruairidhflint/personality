@@ -3,13 +3,12 @@ import { AnswersContext } from '../Context/AnswersContext';
 import { questionGroups, dummyData } from '../Helpers/Helpers';
 const TestFile = () => {
   const { userAnswers } = useContext(AnswersContext);
-  const megaTest = processAnswers(dummyData);
+  const megaTest = processAnswers(userAnswers);
   console.log(userAnswers);
   console.log(megaTest);
   return (
     <>
       <h1 style={{ fontSize: '5rem' }}>TEST PAGE</h1>
-  
     </>
   );
 };
@@ -17,6 +16,7 @@ const TestFile = () => {
 export default TestFile;
 
 const processAnswers = (suppliedAnswers) => {
+  const { selfEI, selfSN, selfTF, selfJP } = suppliedAnswers;
   const results = {
     E: 0,
     I: 0,
@@ -26,6 +26,10 @@ const processAnswers = (suppliedAnswers) => {
     F: 0,
     J: 0,
     P: 0,
+    selfEI,
+    selfSN,
+    selfTF,
+    selfJP,
   };
 
   questionGroups.EI.forEach((answer) => {

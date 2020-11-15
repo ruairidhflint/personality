@@ -15,7 +15,7 @@ const Question = ({ number, question, answers, setPosition, history }) => {
     e.currentTarget.blur();
     setUserAnswers((prev) => ({ ...prev, [number]: val }));
     if (number === 70) {
-      history.push('/test');
+      history.push('/selfperception');
     } else {
       setPosition((prev) => prev + 1);
     }

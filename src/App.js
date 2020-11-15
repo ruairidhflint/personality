@@ -12,6 +12,7 @@ import {
   QuestionContainer,
   TestFile,
 } from './Views/index';
+import RangeTest from './Views/RangeTest';
 
 function App() {
   const [userAnswers, setUserAnswers] = useState({});
@@ -25,6 +26,7 @@ function App() {
           <Route path="/instructions" component={Instructions} />
           <Route path="/questions" component={QuestionContainer} />
           <Route path="/test" component={TestFile} />
+          <Route path="/range" component={RangeTest} />
         </AppContainer>
       </AnswersContext.Provider>
     </ThemeProvider>

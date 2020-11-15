@@ -2,7 +2,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import { useSpring, animated } from 'react-spring';
 
-const RangeTest = () => {
+const SelfPerceptionSlider = () => {
   const [value, setValue] = useState(3);
   const title = useSpring({
     config: { duration: 1500 },
@@ -224,4 +224,4 @@ const StyledIntroButton = styled(animated.span)`
   }
 `;
 
-export default RangeTest;
+export default SelfPerceptionSlider;

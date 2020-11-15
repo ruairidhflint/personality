@@ -389,3 +389,38 @@ export const temperamentQuestions = [
     answers: ['deliberate than spontaneous?', 'spontaneous than deliberate?'],
   },
 ];
+
+export const selfPerceptionContent = [
+  {
+    name: 'selfEI',
+    choices: ['Extroversion', 'Introversion'],
+    details: [
+      'Like variety and action. Often impatient with long, slow tasks. Often act quickly, sometimes without thinking. Develop ideas by mutual discussion',
+      'Like quiet forf concentration. Tend not to mind long, slow tasks. Like to think before they act. Develop ideas by reflection.',
+    ],
+  },
+  {
+    name: 'selfSN',
+    choices: ['Sensing', 'Intuition'],
+    details: [
+      'Like using experience and standard ways to solve problems. May distrust and ignore their inspirations. Enjoy using developed skills. Seldom make errors of fact. Prefer communication of what is.',
+      'Like solving new and complex problems. May follow inspirations, good or bad. Like to do innovative things. Enjoy learning new skills. Frequently make errors of fact. Prefer change, sometimes radical.',
+    ],
+  },
+  {
+    name: 'selfTF',
+    choices: ['Thinking', 'Feeling'],
+    details: [
+      "Use loigical analysis to reach conclusions. Can work without harmony. May hurt people's feelings without knowing it. Tend to decide impersonally, sometimes paying insufficient attention to people's wishes. Tend to be firm minded and can give criticism when appropriate. Looks at the principles involved in a situation.",
+      'Uses values to reach conclusions. Works best in harmony with others. Enjoy pleasing people, even in unimportant things. Often lets decisions be influenced by their own and other peoples likes and dislikes. Tend to be sympathetic and dislike, even avoid, telling other people things. Look at the underlying issues in a situation. ',
+    ],
+  },
+  {
+    name: 'selfJP',
+    choices: ['Judging', 'Perceiving'],
+    details: [
+      'Work best when they can plan work and follow their plan. Like to get things settled and finished. Tend to be satisfied upon reaching decisions. Reach closure by deciding quickly. Seek Structure and schedules. Tend to be punctual.',
+      'Enjoy flexibility in their work. Like to leave things open for minute changes. Tend to be curious and like new angles. Postpone decisions, waiting for options. Adapt well to changing situations and feel restricted without change. Tend not to mind being late.',
+    ],
+  },
+];

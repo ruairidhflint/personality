@@ -2,8 +2,10 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import { useSpring, animated } from 'react-spring';
 
-const SelfPerceptionSlider = () => {
+const SelfPerceptionSlider = ({ quadrant, history, setPosition }) => {
   const [value, setValue] = useState(3);
+  const { choices, details } = quadrant;
+
   const title = useSpring({
     config: { duration: 1500 },
     opacity: 1,
@@ -16,20 +18,20 @@ const SelfPerceptionSlider = () => {
 
   const testClick = () => {
     console.log(value);
+    setValue(3);
+    setPosition((prev) => (prev += 1));
   };
   return (
     <StyledIntroductionContainer style={title}>
-      <StyledIntroTitle>Extroversion - Introversion</StyledIntroTitle>
+      <StyledIntroTitle>
+        {choices[0]} - {choices[1]}
+      </StyledIntroTitle>
       <StyledIntroContent>
         <p>
-          <span>Extroversion</span> - Like variety and action. Often impatient
-          with long, slow tasks. Often act quickly, sometimes without thinking.
-          Develop ideas by mutual discussion.
+          <span>{choices[0]}</span> - {details[0]}
         </p>
         <p>
-          <span>Introversion</span> - Like quiet forf concentration. Tend not to
-          mind long, slow tasks. Like to think before they act. Develop ideas by
-          reflection.
+          <span>{choices[1]}</span> - {details[1]}
         </p>
       </StyledIntroContent>
       <StyledRangeSlider>
@@ -51,8 +53,8 @@ const SelfPerceptionSlider = () => {
         </div>
       </StyledRangeSlider>
       <div id="tags">
-        <h3>Extroversion</h3>
-        <h3>Introversion</h3>
+        <h3>{choices[0]}</h3>
+        <h3>{choices[1]}</h3>
       </div>
 
       <StyledIntroButton>

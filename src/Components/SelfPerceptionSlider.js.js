@@ -200,7 +200,7 @@ const StyledIntroTitle = styled(animated.h1)`
   margin: 2rem;
 `;
 
-const StyledIntroContent = styled(animated.p)`
+const StyledIntroContent = styled(animated.div)`
   font-size: 1.9rem;
   color: ${(props) => props.theme.mediumgrey};
   white-space: pre-wrap;

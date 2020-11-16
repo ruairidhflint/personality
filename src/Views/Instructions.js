@@ -47,7 +47,7 @@ const Instructions = () => {
         <p style={{ marginTop: '2.5rem' }}>{testText.end}</p>
       </StyledInstructionContent>
       <StyledInstructionButton style={button}>
-        <Link to="/questions">Start</Link>
+        <Link to="/questions">start</Link>
       </StyledInstructionButton>
     </StyledInstructionsContainer>
   );

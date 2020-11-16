@@ -1,8 +1,107 @@
-export const questionGroups = {
-    EI: [ 1, 8, 15, 22, 29, 36, 43, 50, 57, 64 ],
-    SN: [ 2, 3, 9, 10, 16, 17, 23, 24, 30, 31, 37, 38, 44, 45, 51, 52, 58, 59, 65, 66 ],
-    TF: [ 4, 5, 11, 12, 18, 19, 25, 26, 32, 33, 39, 40, 46, 47, 53, 54, 60, 61, 67, 68 ],
-    JP: [ 6, 7, 13, 14, 20, 21, 27, 28, 34, 35, 41, 42, 48, 49, 55, 56, 62, 63, 69, 70 ]
+import { questionGroups } from '../Constants/Questions';
+
+export const processAnswers = (suppliedAnswers) => {
+  const { selfEI, selfSN, selfTF, selfJP } = suppliedAnswers;
+  const results = {
+    E: 0,
+    I: 0,
+    S: 0,
+    N: 0,
+    T: 0,
+    F: 0,
+    J: 0,
+    P: 0,
+    selfEI,
+    selfSN,
+    selfTF,
+    selfJP,
+  };
+
+  questionGroups.EI.forEach((answer) => {
+    if (suppliedAnswers[answer] === 'a') {
+      results.E += 1;
+    } else {
+      results.I += 1;
+    }
+  });
+
+  questionGroups.SN.forEach((answer) => {
+    if (suppliedAnswers[answer] === 'a') {
+      results.S += 1;
+    } else {
+      results.N += 1;
+    }
+  });
+
+  questionGroups.TF.forEach((answer) => {
+    if (suppliedAnswers[answer] === 'a') {
+      results.T += 1;
+    } else {
+      results.F += 1;
+    }
+  });
+
+  questionGroups.JP.forEach((answer) => {
+    if (suppliedAnswers[answer] === 'a') {
+      results.J += 1;
+    } else {
+      results.P += 1;
+    }
+  });
+
+  return results;
 };
 
-export const dummyData = {1: "a", 2: "b", 3: "a", 4: "b", 5: "a", 6: "b", 7: "a", 8: "b", 9: "a", 10: "b", 11: "a", 12: "b", 13: "a", 14: "b", 15: "a", 16: "b", 17: "a", 18: "a", 19: "b", 20: "a", 21: "a", 22: "b", 23: "a", 24: "b", 25: "a", 26: "a", 27: "b", 28: "b", 29: "b", 30: "b", 31: "a", 32: "a", 33: "a", 34: "a", 35: "b", 36: "a", 37: "b", 38: "a", 39: "b", 40: "a", 41: "b", 42: "a", 43: "b", 44: "b", 45: "b", 46: "a", 47: "a", 48: "a", 49: "b", 50: "b", 51: "b", 52: "a", 53: "a", 54: "b", 55: "a", 56: "b", 57: "a", 58: "b", 59: "a", 60: "b", 61: "a", 62: "b", 63: "a", 64: "b", 65: "a", 66: "b", 67: "b", 68: "b", 69: "a", 70: "a"}
+export const determineTemperamentType = (answers) => {
+  const dominantQuadrants = [];
+
+  if (answers.E === answers.I) {
+    if (answers.selfEI <= 3) {
+      dominantQuadrants.push('E');
+    } else {
+      dominantQuadrants.push('I');
+    }
+  } else if (answers.E > answers.I) {
+    dominantQuadrants.push('E');
+  } else {
+    dominantQuadrants.push('I');
+  }
+
+  if (answers.S === answers.N) {
+    if (answers.selfSN <= 3) {
+      dominantQuadrants.push('S');
+    } else {
+      dominantQuadrants.push('M');
+    }
+  } else if (answers.S > answers.N) {
+    dominantQuadrants.push('S');
+  } else {
+    dominantQuadrants.push('N');
+  }
+
+  if (answers.T === answers.F) {
+    if (answers.selfTF <= 3) {
+      dominantQuadrants.push('T');
+    } else {
+      dominantQuadrants.push('F');
+    }
+  } else if (answers.T > answers.F) {
+    dominantQuadrants.push('T');
+  } else {
+    dominantQuadrants.push('F');
+  }
+
+  if (answers.J === answers.P) {
+    if (answers.selfJP <= 3) {
+      dominantQuadrants.push('J');
+    } else {
+      dominantQuadrants.push('P');
+    }
+  } else if (answers.J > answers.P) {
+    dominantQuadrants.push('J');
+  } else {
+    dominantQuadrants.push('P');
+  }
+
+  return dominantQuadrants.join('');
+};

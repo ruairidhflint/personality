@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { AnswersContext } from '../Context/AnswersContext';
-import { questionGroups, dummyData } from '../Helpers/Helpers';
+import { processAnswers } from '../Helpers/Helpers';
+
 const TestFile = () => {
   const { userAnswers } = useContext(AnswersContext);
   const megaTest = processAnswers(userAnswers);
@@ -14,55 +15,3 @@ const TestFile = () => {
 };
 
 export default TestFile;
-
-const processAnswers = (suppliedAnswers) => {
-  const { selfEI, selfSN, selfTF, selfJP } = suppliedAnswers;
-  const results = {
-    E: 0,
-    I: 0,
-    S: 0,
-    N: 0,
-    T: 0,
-    F: 0,
-    J: 0,
-    P: 0,
-    selfEI,
-    selfSN,
-    selfTF,
-    selfJP,
-  };
-
-  questionGroups.EI.forEach((answer) => {
-    if (suppliedAnswers[answer] === 'a') {
-      results.E += 1;
-    } else {
-      results.I += 1;
-    }
-  });
-
-  questionGroups.SN.forEach((answer) => {
-    if (suppliedAnswers[answer] === 'a') {
-      results.S += 1;
-    } else {
-      results.N += 1;
-    }
-  });
-
-  questionGroups.TF.forEach((answer) => {
-    if (suppliedAnswers[answer] === 'a') {
-      results.T += 1;
-    } else {
-      results.F += 1;
-    }
-  });
-
-  questionGroups.JP.forEach((answer) => {
-    if (suppliedAnswers[answer] === 'a') {
-      results.J += 1;
-    } else {
-      results.P += 1;
-    }
-  });
-
-  return results;
-};

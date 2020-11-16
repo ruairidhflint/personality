@@ -27,7 +27,7 @@ const Introduction = () => {
       <StyledIntroTitle style={title}>Introduction</StyledIntroTitle>
       <StyledIntroContent style={content}>{testText}</StyledIntroContent>
       <StyledIntroButton style={button}>
-        <Link to="/instructions">Next</Link>
+        <Link to="/instructions">next</Link>
       </StyledIntroButton>
     </StyledIntroductionContainer>
   );

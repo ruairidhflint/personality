@@ -4,6 +4,7 @@ import Instructions from './Instructions';
 import QuestionContainer from './QuestionContainer';
 import TestFile from './TestFile';
 import SliderContainer from './SliderContainer';
+import SelfPerceptionIntroduction from './SelfPerceptionIntroduction';
 
 export {
   TitlePage,
@@ -12,4 +13,5 @@ export {
   QuestionContainer,
   TestFile,
   SliderContainer,
+  SelfPerceptionIntroduction
 };

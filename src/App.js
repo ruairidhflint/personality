@@ -12,6 +12,7 @@ import {
   QuestionContainer,
   TestFile,
   SliderContainer,
+  SelfPerceptionIntroduction,
 } from './Views/index';
 
 function App() {
@@ -26,6 +27,10 @@ function App() {
           <Route path="/instructions" component={Instructions} />
           <Route path="/questions" component={QuestionContainer} />
           <Route path="/test" component={TestFile} />
+          <Route
+            path="/selfperception-intro"
+            component={SelfPerceptionIntroduction}
+          />
           <Route path="/selfperception" component={SliderContainer} />
         </AppContainer>
       </AnswersContext.Provider>

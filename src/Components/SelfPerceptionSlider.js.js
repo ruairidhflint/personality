@@ -70,7 +70,7 @@ const SelfPerceptionSlider = ({ quadrant, history, setPosition }) => {
   );
 };
 
-const StyledRangeSlider = styled.div`
+export const StyledRangeSlider = styled.div`
   width: 92%;
   margin-top: 5rem;
   input[type='range'] {
@@ -188,7 +188,6 @@ const StyledIntroductionContainer = styled(animated.div)`
   #tags {
     margin-top: 3rem;
     font-size: 1.5rem;
-    ${'' /* color: ${props => props.theme.mediumgrey}; */}
     color: grey;
     width: 100%;
     display: flex;

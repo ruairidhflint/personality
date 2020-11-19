@@ -3,7 +3,7 @@ import { questionGroups } from '../Constants/Questions';
 export const processAnswers = (suppliedAnswers) => {
   const answersLength = Object.keys(suppliedAnswers).length;
 
-  if (answersLength !== 74) {
+  if (answersLength !== 75) {
     return { error: 'Not all answers were supplied!' };
   }
 

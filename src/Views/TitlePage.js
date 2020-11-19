@@ -10,6 +10,7 @@ const TitlePage = (props) => {
   const [loading, setLoading] = useState(true);
   const { setUserAnswers } = useContext(AnswersContext);
   const [name, setName] = useState('');
+  const [error, setError] = useState('');
 
   useEffect(() => {
     const { id } = props.match.params;
@@ -20,10 +21,12 @@ const TitlePage = (props) => {
         if (res.data.message === 'Proceed') {
           setUserAnswers({ user_id: res.data.user._id });
           setName(res.data.user.field_data.first_name);
+        } else {
+          setError(res.data.message);
         }
       })
       .catch((err) => {
-        console.log(err);
+        setError(err.response.data.message);
         setName(null);
       })
       .finally(() => {
@@ -38,7 +41,11 @@ const TitlePage = (props) => {
       </StyledTitlePage>
     );
   } else {
-    return <>{name ? <IntroSuccess name={name} /> : <IntroFailure />}</>;
+    return (
+      <>
+        {name ? <IntroSuccess name={name} /> : <IntroFailure error={error} />}
+      </>
+    );
   }
 };
 
@@ -52,11 +59,21 @@ const StyledTitlePage = styled(animated.div)`
 
   h1 {
     font-size: 5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  p {
+    font-size: 1.9rem;
+    color: ${(props) => props.theme.mediumgrey};
+    white-space: pre-wrap;
+    width: 85%;
+    text-align: center;
+    line-height: 2.1rem;
   }
   a {
     font-size: 2rem;
     color: ${(props) => props.theme.orange};
-    margin-top: 1rem;
+    margin-top: 1.5rem;
     transition: opacity 0.2s ease-in-out;
     :hover {
       opacity: 0.6;
@@ -76,12 +93,17 @@ const IntroSuccess = ({ name }) => {
   return (
     <StyledTitlePage style={props}>
       <h1>Hi {name}!</h1>
+      <p>
+        The following personality test will take no more than 20 minutes but
+        will require your undivided attention. Please close any distracting tabs
+        and make sure you will remain undisturbed for the duration .
+      </p>
       <Link to="/introduction">start</Link>
     </StyledTitlePage>
   );
 };
 
-const IntroFailure = () => {
+const IntroFailure = ({error}) => {
   const props = useSpring({
     config: { duration: 1000 },
     opacity: 1,
@@ -89,7 +111,8 @@ const IntroFailure = () => {
   });
   return (
     <StyledTitlePage style={props}>
-      <h1>Failure</h1>
+      <h1>Error</h1>
+      <p>{error}</p>
     </StyledTitlePage>
   );
 };

@@ -1,27 +1,37 @@
 import { useContext, useEffect, useState } from 'react';
+import { Redirect } from 'react-router-dom';
 import Spinner from '../Components/Spinner';
 import { AnswersContext } from '../Context/AnswersContext';
-import { processAnswers } from '../Helpers/Helpers';
+import { processAnswers, determineTemperamentType } from '../Helpers/Helpers';
 
 const ResultsMainPage = () => {
   const [loading, setLoading] = useState(true);
+  const [personalityType, setPersonalityType] = useState('');
   const { userAnswers } = useContext(AnswersContext);
-  const megaTest = processAnswers(userAnswers);
-  console.log(userAnswers);
-  console.log(megaTest);
 
   useEffect(() => {
+    const processed = processAnswers(userAnswers);
+    const type = determineTemperamentType(processed);
+    console.log(userAnswers);
+    console.log(processed);
+    console.log(type);
+    setPersonalityType(type);
     const timer = setTimeout(() => {
       setLoading(false);
     }, 3000);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [userAnswers]);
 
   if (loading) {
     return <Spinner />;
   } else {
-    return <h1>Loaded!</h1>;
+    return (
+      <>
+        <h1 style={{ fontSize: '5rem' }}>{personalityType}</h1>
+        {personalityType === 'Error!' ? <Redirect to="/" /> : null}
+      </>
+    );
   }
 };
 

@@ -21,7 +21,7 @@ const SelfPerceptionSlider = ({ quadrant, history, setPosition }) => {
   const submitAnswer = () => {
     setUserAnswers((prev) => ({ ...prev, [quadrant.name]: value }));
     if (quadrant.name === 'selfJP') {
-      history.push('/test');
+      history.push('/results');
     } else {
       setValue(3);
       setPosition((prev) => (prev += 1));

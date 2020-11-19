@@ -1,8 +1,7 @@
-import axios from 'axios';
 import { ThemeProvider } from 'styled-components';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import GlobalStyle from './Styles/cssReset';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Theme } from './Styles/themes';
 import { AppContainer } from './Styles/AppContainer';
 import { AnswersContext } from './Context/AnswersContext';
@@ -20,32 +19,23 @@ import {
 function App() {
   const [userAnswers, setUserAnswers] = useState({});
 
-  useEffect(() => {
-    axios
-      .get('https://thehub.cpandr.co.uk/api/users/')
-      .then((res) => {
-        console.log(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
   return (
     <ThemeProvider theme={Theme}>
       <AnswersContext.Provider value={{ userAnswers, setUserAnswers }}>
         <GlobalStyle />
         <AppContainer>
           <Switch>
-            <Route exact path="/" component={TitlePage} />
+            <Redirect exact from="/" to="/home" />
+            <Route exact path="/home/:id" component={TitlePage} />
             <Route path="/introduction" component={Introduction} />
             <Route path="/instructions" component={Instructions} />
             <Route path="/questions" component={QuestionContainer} />
-            <Route path="/results" component={ResultsMainPage} />
             <Route
               path="/selfperception-intro"
               component={SelfPerceptionIntroduction}
             />
             <Route path="/selfperception" component={SliderContainer} />
+            <Route path="/results" component={ResultsMainPage} />
             <Route component={ErrorPage} />
           </Switch>
         </AppContainer>

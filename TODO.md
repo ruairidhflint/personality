@@ -15,4 +15,5 @@
 - Introduce error handling and redirects if necessary
 - Create 404 page and introduce switch router
 - Considering extracting similar styles into styles folder to avoid repetition
-- Work extra hard on resposiveness 
+- Work extra hard on responsiveness 
+

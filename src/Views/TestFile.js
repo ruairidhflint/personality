@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import Spinner from '../Components/Spinner';
 import { AnswersContext } from '../Context/AnswersContext';
 import { processAnswers } from '../Helpers/Helpers';
 
@@ -10,6 +11,7 @@ const TestFile = () => {
   return (
     <>
       <h1 style={{ fontSize: '5rem' }}>TEST PAGE</h1>
+      <Spinner />
     </>
   );
 };

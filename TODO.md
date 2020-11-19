@@ -16,4 +16,3 @@
 
 - Display full readout
 - Display short read out
-- Display thank you message

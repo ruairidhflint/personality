@@ -59,7 +59,6 @@ export const processAnswers = (suppliedAnswers) => {
 };
 
 export const determineTemperamentType = (answers) => {
-  
   const answersLength = Object.keys(answers).length;
   if (answersLength !== 12) {
     return 'Error!';

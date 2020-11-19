@@ -16,12 +16,3 @@
 
 - Display full readout
 - Display short read out
-
-What is the flow?
-
-Show spinner on loading screen - parse ID from URL
-Send to database and check to see if a record exists for that user
-If no - continue - if yes, display a page preventing them from doing anything
-
-Store the userID in state - go through the whole process....on the final screen, submit to an
-endpoint that saves the data

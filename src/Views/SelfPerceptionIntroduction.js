@@ -12,25 +12,10 @@ const SelfPerceptionIntroduction = () => {
     from: { opacity: 0 },
   });
 
-  const content = useSpring({
-    config: { duration: 1200 },
-    opacity: 1,
-    from: { opacity: 0 },
-    delay: 500,
-  });
-
-  const button = useSpring({
-    config: { duration: 1200 },
-    opacity: 1,
-    from: { opacity: 0 },
-    delay: 2500,
-  });
   return (
-    <StyledInstructionsContainer>
-      <StyledInstructionTitle style={title}>
-        Self-Perception
-      </StyledInstructionTitle>
-      <StyledInstructionContent style={content}>
+    <StyledInstructionsContainer style={title}>
+      <StyledInstructionTitle>Self-Perception</StyledInstructionTitle>
+      <StyledInstructionContent>
         {testText.main.map((item, i) => {
           return (
             <p
@@ -72,7 +57,7 @@ const SelfPerceptionIntroduction = () => {
         </p>
       </StyledInstructionContent>
 
-      <StyledInstructionButton style={button}>
+      <StyledInstructionButton>
         <Link to="/selfperception">start</Link>
       </StyledInstructionButton>
     </StyledInstructionsContainer>

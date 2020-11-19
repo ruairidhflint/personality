@@ -1,6 +1,12 @@
 import { questionGroups } from '../Constants/Questions';
 
 export const processAnswers = (suppliedAnswers) => {
+  const answersLength = Object.keys(suppliedAnswers).length;
+
+  if (answersLength !== 74) {
+    return { error: 'Not all answers were supplied!' };
+  }
+
   const { selfEI, selfSN, selfTF, selfJP } = suppliedAnswers;
   const results = {
     E: 0,

@@ -36,6 +36,7 @@ const ResultsMainPage = () => {
   } else {
     return (
       <StyledResultsPage>
+        {personalityType === 'Error!' ? <Redirect to="/" /> : null}
         <h1>Thank You</h1>
         <p>
           Your answers have been processed and saved. In the next few days you
@@ -50,7 +51,6 @@ const ResultsMainPage = () => {
           , an expert in Personality Types and Leadership training, to discuss
           your results clarify any questions you have.
         </p>
-        {/* {personalityType === 'Error!' ? <Redirect to="/" /> : null} */}
       </StyledResultsPage>
     );
   }

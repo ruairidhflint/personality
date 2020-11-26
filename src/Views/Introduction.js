@@ -35,11 +35,15 @@ const Introduction = () => {
 
 const StyledIntroductionContainer = styled(animated.div)`
   width: 100%;
-  height: 90vh;
+  min-height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  @media(max-width: 950px){
+    padding: 1.5rem;
+  }
 `;
 
 const StyledIntroTitle = styled(animated.h1)`

@@ -178,8 +178,7 @@ export const StyledRangeSlider = styled.div`
 `;
 
 const StyledIntroductionContainer = styled(animated.div)`
-  width: 100%;
-  height: 90vh;
+  min-height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -193,11 +192,27 @@ const StyledIntroductionContainer = styled(animated.div)`
     display: flex;
     justify-content: space-between;
   }
+
+  @media (max-width: 950px) {
+    padding: 3.5rem;
+  }
+
+  @media (max-width: 450px) {
+    padding: 2.2rem;
+  }
 `;
 
 const StyledIntroTitle = styled(animated.h1)`
   font-size: 4rem;
   margin: 2rem;
+
+  @media (max-width: 620px) {
+    font-size: 3rem;
+    margin: 1.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
 `;
 
 const StyledIntroContent = styled(animated.div)`
@@ -207,6 +222,10 @@ const StyledIntroContent = styled(animated.div)`
   width: 95%;
   text-align: left;
   line-height: 2.1rem;
+
+  @media (max-width: 620px) {
+    font-size: 1.7rem;
+  }
 
   span {
     color: ${(props) => props.theme.darkgrey};

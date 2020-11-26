@@ -31,15 +31,7 @@ const Instructions = () => {
         <p style={{ marginBottom: '2.5rem' }}>{testText.intro}</p>
         {testText.intructions.map((item, i) => {
           return (
-            <p
-              key={i}
-              style={{
-                marginBottom: '0.5rem',
-                marginLeft: '5rem',
-                color: '#424242',
-                textAlign: 'left',
-              }}
-            >
+            <p key={i} className="list-item">
               - {item}
             </p>
           );
@@ -54,12 +46,15 @@ const Instructions = () => {
 };
 
 const StyledInstructionsContainer = styled(animated.div)`
-  width: 100%;
-  height: 90vh;
+  min-height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: 950px) {
+    padding: 1rem;
+  }
 `;
 
 const StyledInstructionTitle = styled(animated.h1)`
@@ -74,12 +69,27 @@ const StyledInstructionContent = styled(animated.div)`
   width: 95%;
   text-align: center;
   line-height: 2.1rem;
+
+  .list-item {
+    margin-bottom: 0.5rem;
+    margin-left: 5rem;
+    color: #424242;
+    text-align: left;
+
+    @media(max-width: 800px){
+      margin-left: 2.5rem;
+    }
+  }
 `;
 
 const StyledInstructionButton = styled(animated.span)`
   font-size: 2rem;
   color: ${(props) => props.theme.orange};
   margin-top: 1.5rem;
+
+  @media (max-width: 600px) {
+    margin-bottom: 2rem;
+  }
 
   a {
     transition: opacity 0.2s ease-in-out;

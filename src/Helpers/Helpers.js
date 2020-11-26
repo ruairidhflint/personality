@@ -4,8 +4,7 @@ export const processAnswers = (suppliedAnswers) => {
   const answersLength = Object.keys(suppliedAnswers).length;
 
   if (answersLength !== 75) {
-    console.log(answersLength);
-    return { error: 'Not all answers were supplied!' };
+    return 'error';
   }
 
   const { selfEI, selfSN, selfTF, selfJP } = suppliedAnswers;
@@ -62,7 +61,7 @@ export const processAnswers = (suppliedAnswers) => {
 export const determineTemperamentType = (answers) => {
   const answersLength = Object.keys(answers).length;
   if (answersLength !== 12) {
-    return 'Error!';
+    return 'error';
   }
 
   const dominantQuadrants = [];

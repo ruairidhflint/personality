@@ -12,7 +12,7 @@ import { dummyData } from '../../Constants/Questions';
 
 const ResultsMainPage = () => {
   const [loading, setLoading] = useState(true);
-  const [personalityType, setPersonalityType] = useState('');
+  const [result, setResult] = useState('');
   const { userAnswers } = useContext(AnswersContext);
 
   useEffect(() => {
@@ -24,23 +24,27 @@ const ResultsMainPage = () => {
       temperament_results: processed,
     };
 
+    if(processed === 'error' || type === 'error') {
+      setResult('Not all answers were supplied!')
+      setLoading(false);
+      return;
+    }
+    
     axios
       .post(
         `http://localhost:5000/api/personality/save_results/${dummyData.user_id}`,
         data,
       )
-      .then((res) => {
-        console.log(res.data);
+      .then(() => {
+        setResult('success');
       })
       .catch((err) => {
         console.log(err.response);
+        setResult(err.response.data.message);
+      })
+      .finally(() => {
+        setLoading(false);
       });
-    setPersonalityType(type);
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 3000);
-
-    return () => clearTimeout(timer);
   }, [userAnswers]);
 
   if (loading) {
@@ -52,21 +56,24 @@ const ResultsMainPage = () => {
   } else {
     return (
       <StyledResultsPage>
-        {personalityType === 'Error!' ? <Redirect to="/" /> : null}
-        <h1>Thank You</h1>
-        <p>
-          Your answers have been processed and saved. In the next few days you
-          will have a one to one meeting with{' '}
-          <a
-            href="http://www.dannymcguigan.com/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Danny McGuigan
-          </a>
-          , an expert in Personality Types and Leadership training, to discuss
-          your results clarify any questions you have.
-        </p>
+        <h1>{result === 'success' ? 'Thank You' : 'Error'}</h1>
+        {result === 'success' ? (
+          <p>
+            Your answers have been processed and saved. In the next few days you
+            will have a one to one meeting with{' '}
+            <a
+              href="http://www.dannymcguigan.com/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Danny McGuigan
+            </a>
+            , an expert in Personality Types and Leadership training, to discuss
+            your results clarify any questions you have.
+          </p>
+        ) : (
+          <p>{result}</p>
+        )}
       </StyledResultsPage>
     );
   }

@@ -1,5 +1,5 @@
 import { ThemeProvider } from 'styled-components';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import GlobalStyle from './Styles/cssReset';
 import { useState } from 'react';
 import { Theme } from './Styles/themes';
@@ -25,7 +25,6 @@ function App() {
         <GlobalStyle />
         <AppContainer>
           <Switch>
-            <Redirect exact from="/" to="/home" />
             <Route exact path="/home/:id" component={TitlePage} />
             <Route path="/introduction" component={Introduction} />
             <Route path="/instructions" component={Instructions} />

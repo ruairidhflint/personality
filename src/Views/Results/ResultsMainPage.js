@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
-import { Redirect } from 'react-router-dom';
 import Spinner from '../../Components/Spinner';
 import { AnswersContext } from '../../Context/AnswersContext';
 import {

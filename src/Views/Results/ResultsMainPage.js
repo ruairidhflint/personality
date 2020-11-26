@@ -24,12 +24,12 @@ const ResultsMainPage = () => {
       temperament_results: processed,
     };
 
-    if(processed === 'error' || type === 'error') {
-      setResult('Not all answers were supplied!')
+    if (processed === 'error' || type === 'error') {
+      setResult('Not all answers were supplied!');
       setLoading(false);
       return;
     }
-    
+
     axios
       .post(
         `http://localhost:5000/api/personality/save_results/${dummyData.user_id}`,
@@ -39,7 +39,6 @@ const ResultsMainPage = () => {
         setResult('success');
       })
       .catch((err) => {
-        console.log(err.response);
         setResult(err.response.data.message);
       })
       .finally(() => {

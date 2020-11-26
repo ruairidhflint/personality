@@ -10,7 +10,6 @@ import {
 } from '../../Helpers/Helpers';
 import { dummyData } from '../../Constants/Questions';
 
-
 const ResultsMainPage = () => {
   const [loading, setLoading] = useState(true);
   const [personalityType, setPersonalityType] = useState('');
@@ -19,10 +18,6 @@ const ResultsMainPage = () => {
   useEffect(() => {
     const processed = processAnswers(dummyData);
     const type = determineTemperamentType(processed);
-    console.log(dummyData);
-    console.log(processed);
-    console.log(type);
-
     const data = {
       temperament_answers: dummyData,
       temperament_type: type,

@@ -16,7 +16,7 @@ import {
   ErrorPage,
 } from './Views/index';
 
-function App(props) {
+function App() {
   const [userAnswers, setUserAnswers] = useState({});
 
   return (

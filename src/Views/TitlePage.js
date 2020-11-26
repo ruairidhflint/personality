@@ -11,13 +11,12 @@ const TitlePage = (props) => {
   const { setUserAnswers } = useContext(AnswersContext);
   const [name, setName] = useState('');
   const [error, setError] = useState('');
+  const { id } = props.match.params;
 
   useEffect(() => {
-    const { id } = props.match.params;
     axios
       .get('http://localhost:5000/api/personality/identify/' + id)
       .then((res) => {
-        console.log(res.data);
         if (res.data.message === 'Proceed') {
           setUserAnswers({ user_id: res.data.user._id });
           setName(res.data.user.field_data.first_name);
@@ -32,7 +31,7 @@ const TitlePage = (props) => {
       .finally(() => {
         setLoading(false);
       });
-  }, []);
+  }, [setUserAnswers, id]);
 
   if (loading) {
     return (
@@ -103,7 +102,7 @@ const IntroSuccess = ({ name }) => {
   );
 };
 
-const IntroFailure = ({error}) => {
+const IntroFailure = ({ error }) => {
   const props = useSpring({
     config: { duration: 1000 },
     opacity: 1,

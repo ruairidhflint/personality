@@ -1,11 +1,9 @@
 import styled from 'styled-components';
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSpring, animated } from 'react-spring';
 import { StyledRangeSlider } from '../Components/SelfPerceptionSlider.js';
 
 const SelfPerceptionIntroduction = () => {
-  const [dummyValue, setDummyValue] = useState(3);
   const title = useSpring({
     config: { duration: 1500 },
     opacity: 1,
@@ -35,8 +33,8 @@ const SelfPerceptionIntroduction = () => {
           min="1"
           max="6"
           step="1"
-          value={dummyValue}
-          onChange={(e) => setDummyValue(e.target.value)}
+          value={3}
+          disabled={true}
         />
         <div id="range-marks">
           <span></span>
@@ -65,13 +63,11 @@ const SelfPerceptionIntroduction = () => {
 };
 
 const StyledInstructionsContainer = styled(animated.div)`
-  ${'' /* width: 100%; */}
   min-height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
 
   @media (max-width: 950px) {
     padding: 3.5rem;

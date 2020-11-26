@@ -65,12 +65,21 @@ const SelfPerceptionIntroduction = () => {
 };
 
 const StyledInstructionsContainer = styled(animated.div)`
-  width: 100%;
-  height: 90vh;
+  ${'' /* width: 100%; */}
+  min-height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+
+  @media (max-width: 950px) {
+    padding: 3.5rem;
+  }
+
+  @media (max-width: 450px) {
+    padding: 2.2rem;
+  }
 
   #tags {
     margin-top: 3rem;
@@ -85,6 +94,12 @@ const StyledInstructionsContainer = styled(animated.div)`
 const StyledInstructionTitle = styled(animated.h1)`
   font-size: 4rem;
   margin: 2rem;
+
+  @media (max-width: 450px) {
+    font-size: 3.5rem;
+    margin: 1.2rem;
+    margin-bottom: 2.5rem;
+  }
 `;
 
 const StyledInstructionContent = styled(animated.div)`
@@ -100,6 +115,10 @@ const StyledInstructionButton = styled(animated.span)`
   font-size: 2rem;
   color: ${(props) => props.theme.orange};
   margin-top: 1.5rem;
+
+  @media (max-width: 600px) {
+    margin-bottom: 2rem;
+  }
 
   a {
     transition: opacity 0.2s ease-in-out;

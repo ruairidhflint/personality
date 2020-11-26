@@ -8,6 +8,7 @@ import {
   determineTemperamentType,
 } from '../../Helpers/Helpers';
 import { dummyData } from '../../Constants/Questions';
+import { backendURL } from '../../Config/endpoint';
 
 const ResultsMainPage = () => {
   const [loading, setLoading] = useState(true);
@@ -31,7 +32,7 @@ const ResultsMainPage = () => {
 
     axios
       .post(
-        `http://localhost:5000/api/personality/save_results/${dummyData.user_id}`,
+        `${backendURL}/api/personality/save_results/${dummyData.user_id}`,
         data,
       )
       .then(() => {

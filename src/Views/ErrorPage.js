@@ -4,9 +4,10 @@ const ErrorPage = () => {
   return (
     <StyledErrorContainer>
       <h1>Uh oh!</h1>
-      <p className="first">
-        Looks like you've taken a wrong turn.</p><p>If you work for CP+R, please
-        follow the link from The Hub to get your unique access token.
+      <p className="first">Looks like you've taken a wrong turn.</p>
+      <p>
+        If you work for CP+R, please follow the link from The Hub to get your
+        unique access token.
       </p>
     </StyledErrorContainer>
   );
@@ -33,10 +34,9 @@ const StyledErrorContainer = styled.div`
     margin-bottom: 1.5rem;
 
     &.first {
-    font-size: 2rem;
+      font-size: 2rem;
 
-    color: ${(props) => props.theme.darkgrey};
-
+      color: ${(props) => props.theme.darkgrey};
     }
   }
 `;

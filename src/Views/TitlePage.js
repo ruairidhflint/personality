@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { useSpring, animated } from 'react-spring';
 import Spinner from '../Components/Spinner';
 import { AnswersContext } from '../Context/AnswersContext';
+import { backendURL } from '../Config/endpoint';
 
 const TitlePage = (props) => {
   const [loading, setLoading] = useState(true);
@@ -15,7 +16,7 @@ const TitlePage = (props) => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:5000/api/personality/identify/' + id)
+      .get(`${backendURL}/api/personality/identify/` + id)
       .then((res) => {
         if (res.data.message === 'Proceed') {
           setUserAnswers({ user_id: res.data.user._id });

@@ -36,17 +36,31 @@ const Question = ({ number, question, answers, setPosition, history }) => {
 export default Question;
 
 const StyledQuestionContainer = styled(animated.div)`
-  width: 100%;
   height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: 950px) {
+    padding: 2rem;
+    height: 75vh
+  }
 `;
 
 const StyledQuestion = styled.h3`
   font-size: 3rem;
   margin: 2rem;
+  text-align: center;
+
+  @media (max-width: 650px) {
+    font-size: 2.6rem;
+  }
+
+
+  @media (max-width: 450px) {
+    font-size: 2rem;
+  }
 `;
 
 const StyledAnswerContainer = styled.div`
@@ -70,6 +84,14 @@ const StyledAnswerContainer = styled.div`
     font-size: 2.2rem;
     color: ${(props) => props.theme.mediumgrey};
     cursor: pointer;
+
+    @media (max-width: 650px) {
+    font-size: 1.8rem;
+  }
+
+  @media (max-width: 450px) {
+    font-size: 1.5rem;
+  }
 
     :hover {
       color: ${(props) => props.theme.blue};

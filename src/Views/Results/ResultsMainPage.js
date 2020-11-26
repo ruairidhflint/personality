@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
+import axios from 'axios';
 import styled from 'styled-components';
 import { Redirect } from 'react-router-dom';
 import Spinner from '../../Components/Spinner';
@@ -7,6 +8,8 @@ import {
   processAnswers,
   determineTemperamentType,
 } from '../../Helpers/Helpers';
+import { dummyData } from '../../Constants/Questions';
+
 
 const ResultsMainPage = () => {
   const [loading, setLoading] = useState(true);
@@ -14,11 +17,29 @@ const ResultsMainPage = () => {
   const { userAnswers } = useContext(AnswersContext);
 
   useEffect(() => {
-    const processed = processAnswers(userAnswers);
+    const processed = processAnswers(dummyData);
     const type = determineTemperamentType(processed);
-    console.log(userAnswers);
+    console.log(dummyData);
     console.log(processed);
     console.log(type);
+
+    const data = {
+      temperament_answers: dummyData,
+      temperament_type: type,
+      temperament_results: processed,
+    };
+
+    axios
+      .post(
+        `http://localhost:5000/api/personality/save_results/${dummyData.user_id}`,
+        data,
+      )
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err.response);
+      });
     setPersonalityType(type);
     const timer = setTimeout(() => {
       setLoading(false);

@@ -4,6 +4,7 @@ export const processAnswers = (suppliedAnswers) => {
   const answersLength = Object.keys(suppliedAnswers).length;
 
   if (answersLength !== 75) {
+    console.log(answersLength);
     return { error: 'Not all answers were supplied!' };
   }
 

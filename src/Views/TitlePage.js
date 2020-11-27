@@ -26,7 +26,11 @@ const TitlePage = (props) => {
         }
       })
       .catch((err) => {
-        setError(err.response.data.message);
+        setError(
+          err.response
+            ? err.response.data.message
+            : 'There was a server error. Please try again',
+        );
         setName(null);
       })
       .finally(() => {

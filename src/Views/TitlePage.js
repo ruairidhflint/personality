@@ -92,7 +92,7 @@ const IntroSuccess = ({ name }) => {
   });
   return (
     <StyledTitlePage style={props}>
-      <h1>Hi {name}!</h1>
+      <h1>Hi {name.trim()}!</h1>
       <p>
         The following personality test will take no more than 20 minutes but
         will require your undivided attention. Please close any distracting tabs

@@ -1,24 +1,17 @@
+
 # TODO
 
-## Features
+- Extract text into variables to clean up code
+- Write out proper introduction and other text
+- Deploy to netlify and configure endpoints
+- Test on yourself and others
+- Create readout in Hub that will display the data for Dannt McGuigan
 
-- Give option to save as PDF
-- Show potential differences between self-perception and questions answered
-- Work on introductory text and instructions
-
-## General
-
-- Extract all constants and texts into separate folder
-- Considering extracting similar styles into styles folder to avoid repetition
-- Work extra hard on responsiveness
-
-## Types of end results
-
-- Display full readout
-- Display short read out
-
-# UPDATED TO DO:
-
-- WRITE OUT INTRODUCTION/INSTRUCTIONS PROPERLY AND CORRECT ERRORS/TYPOS EVERYWHERE ELSE
-- EXTRAC TEXT INTO VARIABLES
-- BUILD WAY FOR RESULTS TO BE READ BACK!!!
+- Move CP+R version to separate branc and work on deploying own version
+- Remove axios calls etc
+- Build stand opening page
+- Begin to write out the 16 different end results
+- Display on finishing the test
+- Give ability to download results as PDF
+- Eventually work on interesting analysis if self-perception is different to actual
+- Deploy

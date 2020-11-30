@@ -15,6 +15,12 @@ const TitlePage = (props) => {
   const { id } = props.match.params;
 
   useEffect(() => {
+    if (id === 'test') {
+      setUserAnswers({ user_id: 'test' });
+      setName('Danny');
+      setLoading(false);
+      return;
+    }
     axios
       .get(`${backendURL}/api/personality/identify/` + id)
       .then((res) => {
@@ -98,7 +104,7 @@ const IntroSuccess = ({ name }) => {
     <StyledTitlePage style={props}>
       <h1>Hi {name.trim()}!</h1>
       <p>
-        The following personality test will take no more than 20 minutes but
+        The following temperament profile will take no more than 20 minutes but
         will require your undivided attention. Please close any distracting tabs
         and make sure you will remain undisturbed for the duration .
       </p>

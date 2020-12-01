@@ -30,7 +30,7 @@ const ResultsMainPage = () => {
     };
 
     if (processed === 'error' || type === 'error') {
-      setResult('Not all answers were supplied!');
+      setResult('Not all answers were supplied');
       setLoading(false);
       return;
     }

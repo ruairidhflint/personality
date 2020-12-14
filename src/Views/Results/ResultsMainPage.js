@@ -7,24 +7,20 @@ import {
   processAnswers,
   determineTemperamentType,
 } from '../../Helpers/Helpers';
-import { dummyData } from '../../Constants/Questions';
 import { backendURL } from '../../Config/endpoint';
 
 const ResultsMainPage = () => {
   const [loading, setLoading] = useState(true);
+  const [userScores, setUserScores] = useState({});
   const [result, setResult] = useState('');
   const { userAnswers } = useContext(AnswersContext);
 
   useEffect(() => {
-    if (userAnswers.user_id === 'test') {
-      setResult('success');
-      setLoading(false);
-      return;
-    }
-    const processed = processAnswers(dummyData);
+    const processed = processAnswers(userAnswers);
     const type = determineTemperamentType(processed);
+    setUserScores(processed);
     const data = {
-      temperament_answers: dummyData,
+      temperament_answers: userAnswers,
       temperament_type: type,
       temperament_results: processed,
     };
@@ -37,7 +33,7 @@ const ResultsMainPage = () => {
 
     axios
       .post(
-        `${backendURL}/api/personality/save_results/${dummyData.user_id}`,
+        `${backendURL}/api/personality/save_results/${userAnswers.user_id}`,
         data,
       )
       .then(() => {
@@ -62,19 +58,51 @@ const ResultsMainPage = () => {
       <StyledResultsPage>
         <h1>{result === 'success' ? 'Thank You' : 'Error'}</h1>
         {result === 'success' ? (
-          <p>
-            Your answers have been processed and saved. In the next few days you
-            will have a one to one meeting with{' '}
-            <a
-              href="http://www.dannymcguigan.com/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Danny McGuigan
-            </a>
-            , an expert in Personality Types and Leadership training, to discuss
-            your results clarify any questions you have.
-          </p>
+          <>
+            <p>
+              Your answers have been processed and saved. Below is an overview
+              of the breakdown of your results based on the questionnaire. How
+              does it compare to your self-assessment?{' '}
+            </p>{' '}
+            <StyledResultsTable>
+              <div className="result-row">
+                <div className="category left">Extroversion</div>
+                <div className="category-result">{userScores.E}</div>
+                <div className="category-result">{userScores.I}</div>
+                <div className="category">Introversion</div>
+              </div>
+              <div className="result-row">
+                <div className="category left">Sensing</div>
+                <div className="category-result">{userScores.S}</div>
+                <div className="category-result">{userScores.N}</div>
+                <div className="category">Intuition</div>
+              </div>
+              <div className="result-row">
+                <div className="category left">Thinking</div>
+                <div className="category-result">{userScores.T}</div>
+                <div className="category-result">{userScores.F}</div>
+                <div className="category">Feeling</div>
+              </div>
+              <div className="result-row">
+                <div className="category left">Judging</div>
+                <div className="category-result">{userScores.J}</div>
+                <div className="category-result">{userScores.P}</div>
+                <div className="category">Perceiving</div>
+              </div>
+            </StyledResultsTable>
+            <p>
+              In the next few days you will have a one to one meeting with
+              <a
+                href="http://www.dannymcguigan.com/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                &nbsp;Danny McGuigan
+              </a>
+              , an expert in Personality Types and Leadership training, to
+              discuss your results clarify any questions you have.
+            </p>
+          </>
         ) : (
           <p>{result}</p>
         )}
@@ -112,6 +140,45 @@ const StyledResultsPage = styled.div`
         opacity: 0.7;
         transition: opactity 0.2s ease-in-out;
       }
+    }
+  }
+`;
+
+const StyledResultsTable = styled.div`
+  width: 90%;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: ${(props) => props.theme.orange};
+  @media (max-width: 630px) {
+    font-size: 1.6rem;
+  }
+
+  .result-row {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .category {
+    width: 30%;
+
+    &.left {
+      text-align: right;
+    }
+  }
+  .category-result {
+    width: 10%;
+    font-size: 4rem;
+    color: ${(props) => props.theme.darkgrey};
+    text-align: center;
+
+    @media (max-width: 630px) {
+      font-size: 2.8rem;
     }
   }
 `;

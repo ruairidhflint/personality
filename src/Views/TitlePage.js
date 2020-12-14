@@ -15,12 +15,6 @@ const TitlePage = (props) => {
   const { id } = props.match.params;
 
   useEffect(() => {
-    if (id === 'test') {
-      setUserAnswers({ user_id: 'test' });
-      setName('Danny');
-      setLoading(false);
-      return;
-    }
     axios
       .get(`${backendURL}/api/personality/identify/` + id)
       .then((res) => {

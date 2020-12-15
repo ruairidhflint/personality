@@ -82,7 +82,7 @@ export const determineTemperamentType = (answers) => {
     if (answers.selfSN <= 3) {
       dominantQuadrants.push('S');
     } else {
-      dominantQuadrants.push('M');
+      dominantQuadrants.push('N');
     }
   } else if (answers.S > answers.N) {
     dominantQuadrants.push('S');

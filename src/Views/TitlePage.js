@@ -100,7 +100,7 @@ const IntroSuccess = ({ name }) => {
       <p>
         The following temperament profile will take no more than 20 minutes but
         will require your undivided attention. Please close any distracting tabs
-        and make sure you will remain undisturbed for the duration .
+        and make sure you will remain undisturbed for the duration.
       </p>
       <Link to="/introduction">start</Link>
     </StyledTitlePage>

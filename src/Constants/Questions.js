@@ -115,7 +115,7 @@ export const temperamentQuestions = [
   },
   {
     number: 22,
-    question: 'In phoning do you...',
+    question: 'Before making a phone call, do you...',
     answers: [
       'rarely question that it will all be said?',
       "rehearse what you'll say?",
@@ -124,12 +124,12 @@ export const temperamentQuestions = [
   {
     number: 23,
     question: 'Facts...',
-    answers: ['"speak for themselves', 'illustrate principles'],
+    answers: ['speak for themselves', 'illustrate principles'],
   },
   {
     number: 24,
     question: 'Are visionaries...',
-    answers: ['"somewhat annoying?', 'rather fascinating?'],
+    answers: ['somewhat annoying?', 'rather fascinating?'],
   },
   {
     number: 25,
@@ -253,7 +253,7 @@ export const temperamentQuestions = [
     question: 'Which is more of a compliment?',
     answers: [
       '"You are a very logical person."',
-      'You are a very sentimental person.',
+      '"You are a very sentimental person."',
     ],
   },
   {
@@ -351,7 +351,7 @@ export const temperamentQuestions = [
   {
     number: 63,
     question: 'Are you a person that is more...',
-    answers: ['routinized than whimsica?', 'whimsical than routinized?'],
+    answers: ['routinized than whimsical?', 'whimsical than routinized?'],
   },
   {
     number: 64,
@@ -396,7 +396,7 @@ export const selfPerceptionContent = [
     choices: ['Extroversion', 'Introversion'],
     details: [
       'Like variety and action. Often impatient with long, slow tasks. Often act quickly, sometimes without thinking. Develop ideas by mutual discussion',
-      'Like quiet forf concentration. Tend not to mind long, slow tasks. Like to think before they act. Develop ideas by reflection.',
+      'Like quiet for concentration. Tend not to mind long, slow tasks. Like to think before they act. Develop ideas by reflection.',
     ],
   },
   {
@@ -419,7 +419,7 @@ export const selfPerceptionContent = [
     name: 'selfJP',
     choices: ['Judging', 'Perceiving'],
     details: [
-      'Work best when they can plan work and follow their plan. Like to get things settled and finished. Tend to be satisfied upon reaching decisions. Reach closure by deciding quickly. Seek Structure and schedules. Tend to be punctual.',
+      'Work best when they can make and follow a plan. Like to get things settled and finished. Tend to be satisfied upon reaching decisions. Reach closure by deciding quickly. Seek structure and schedules. Tend to be punctual.',
       'Enjoy flexibility in their work. Like to leave things open for minute changes. Tend to be curious and like new angles. Postpone decisions, waiting for options. Adapt well to changing situations and feel restricted without change. Tend not to mind being late.',
     ],
   },

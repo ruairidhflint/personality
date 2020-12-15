@@ -129,7 +129,7 @@ export default SelfPerceptionIntroduction;
 const testText = {
   main: [
     'Along with the previous questions, how we perceive our own personality and temperament is important to understanding our potential. All of us display the 8 characteristics in our daily lives, at one time or another. However, on each continuum, you will find two opposing extremes, one of which will be your Natural Dominant Tendency.',
-    'This simply means that, for example, whilst being a naturally dominant extrovert, the same person may sometimes tend to interior reflection, thereby showing a tendency to be introverted as well. However, extroversion is the natural dominant tendency. The same is true and just as valid, vice versa.',
+    'This simply means that, for example, whilst being a naturally dominant extrovert, the same person may sometimes tend to internal reflection, thereby showing a tendency to be introverted as well. However, extroversion is the natural dominant tendency. The same is true and just as valid, vice versa.',
     'Following are eight temperament characteristics in four pairs. There will be a short explanation of each characteristic and then a sliding scale like this:',
   ],
   outro:

@@ -61,7 +61,7 @@ const ResultsMainPage = () => {
           <>
             <p>
               Your answers have been processed and saved. Below is an overview
-              of the breakdown of your results based on the questionnaire. How
+              of of your results based on the questionnaire. How
               does it compare to your self-assessment?{' '}
             </p>{' '}
             <StyledResultsTable>
@@ -100,7 +100,7 @@ const ResultsMainPage = () => {
                 &nbsp;Danny McGuigan
               </a>
               , an expert in Personality Types and Leadership training, to
-              discuss your results clarify any questions you have.
+              discuss your results and clarify any questions you may have.
             </p>
           </>
         ) : (

@@ -61,8 +61,8 @@ const ResultsMainPage = () => {
           <>
             <p>
               Your answers have been processed and saved. Below is an overview
-              of of your results based on the questionnaire. How
-              does it compare to your self-assessment?{' '}
+              of of your results based on the questionnaire. How does it compare
+              to your self-assessment?{' '}
             </p>{' '}
             <StyledResultsTable>
               <div className="result-row">
@@ -90,18 +90,26 @@ const ResultsMainPage = () => {
                 <div className="category">Perceiving</div>
               </div>
             </StyledResultsTable>
-            <p>
-              In the next few days you will have a one to one meeting with
-              <a
-                href="http://www.dannymcguigan.com/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                &nbsp;Danny McGuigan
-              </a>
-              , an expert in Personality Types and Leadership training, to
-              discuss your results and clarify any questions you may have.
-            </p>
+            {userAnswers.user_id !== '5fe23026080a7400177bebb9' ? (
+              <p>
+                In the next few days you will have a one to one meeting with
+                <a
+                  href="http://www.dannymcguigan.com/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  &nbsp;Danny McGuigan
+                </a>
+                , an expert in Personality Types and Leadership training, to
+                discuss your results and clarify any questions you may have.
+              </p>
+            ) : (
+              <p>
+                Thank you for your time and energy completing this
+                questionnaire. We will be in touch shortly with your analysed
+                results.
+              </p>
+            )}
           </>
         ) : (
           <p>{result}</p>

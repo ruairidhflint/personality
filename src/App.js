@@ -8,6 +8,7 @@ import { AnswersContext } from './Context/AnswersContext';
 import {
   TitlePage,
   Introduction,
+  NameEntry,
   Instructions,
   QuestionContainer,
   ResultsMainPage,
@@ -25,7 +26,8 @@ function App() {
         <GlobalStyle />
         <AppContainer>
           <Switch>
-            <Route exact path="/home/:id" component={TitlePage} />
+            <Route exact path="/" component={TitlePage} />
+            <Route exact path="/name" component={NameEntry} />
             <Route path="/introduction" component={Introduction} />
             <Route path="/instructions" component={Instructions} />
             <Route path="/questions" component={QuestionContainer} />

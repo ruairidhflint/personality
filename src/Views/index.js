@@ -6,6 +6,7 @@ import ResultsMainPage from './Results/ResultsMainPage';
 import SliderContainer from './SliderContainer';
 import SelfPerceptionIntroduction from './SelfPerceptionIntroduction';
 import ErrorPage from './ErrorPage';
+import NameEntry from './NameEntry';
 
 export {
   TitlePage,
@@ -16,4 +17,5 @@ export {
   SliderContainer,
   SelfPerceptionIntroduction,
   ErrorPage,
+  NameEntry
 };

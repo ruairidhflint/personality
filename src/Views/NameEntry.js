@@ -33,7 +33,6 @@ const NameEntry = (props) => {
         }
       })
       .catch((err) => {
-        console.log(err);
         setLoading(false);
         setNameInput('');
         setError('Sorry this service is currently unavailabe');

@@ -1,12 +1,6 @@
 
 # TODO
 
-- Extract text into variables to clean up code
-- Write out proper introduction and other text
-- Deploy to netlify and configure endpoints
-- Test on yourself and others
-- Create readout in Hub that will display the data for Dannt McGuigan
-
 - Move CP+R version to separate branc and work on deploying own version
 - Remove axios calls etc
 - Build stand opening page

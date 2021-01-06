@@ -20,7 +20,7 @@ const ResultsMainPage = () => {
     const type = determineTemperamentType(processed);
     setUserType(type);
     const data = {
-      name: userAnswers.user_name,
+      name: userAnswers.name,
       temperament_type: type,
       temperament_results: processed,
     };

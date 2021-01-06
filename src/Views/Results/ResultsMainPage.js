@@ -87,6 +87,9 @@ const StyledResultsPage = styled.div`
     font-size: 7rem;
     margin-bottom: 2rem;
     color: ${(props) => props.theme.darkgrey};
+    @media(max-width: 450px) {
+      font-size: 5rem;
+    }
   }
 
   p {
@@ -102,6 +105,9 @@ const StyledResultsPage = styled.div`
       color: ${(props) => props.theme.orange};
       line-height: 2.8rem;
       width: 100%;
+      @media(max-width: 450px) {
+      width: 90%;
+    }
     }
 
     a {

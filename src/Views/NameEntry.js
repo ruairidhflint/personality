@@ -32,7 +32,7 @@ const NameEntry = (props) => {
           setError('Sorry this name has been used before');
         }
       })
-      .catch((err) => {
+      .catch(() => {
         setLoading(false);
         setNameInput('');
         setError('Sorry this service is currently unavailabe');
@@ -82,6 +82,9 @@ const StyledNameEntry = styled(animated.div)`
   h2 {
     font-size: 3.5rem;
     margin-bottom: 4.3rem;
+    @media(max-width: 450px) {
+      font-size: 2.5rem;
+    }
   }
   form {
     width: 100%;

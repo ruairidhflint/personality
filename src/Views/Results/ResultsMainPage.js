@@ -8,6 +8,7 @@ import {
   determineTemperamentType,
 } from '../../Helpers/Helpers';
 import { backendURL } from '../../Config/endpoint';
+import { personalityTypes } from '../../Constants/personalityTypes';
 
 const ResultsMainPage = () => {
   const [loading, setLoading] = useState(true);
@@ -31,11 +32,11 @@ const ResultsMainPage = () => {
       return;
     }
 
+    setResult('success');
+    setLoading(false);
+
     axios
-      .post(
-        `${backendURL}/api/personality/save_recruitment_results/`,
-        data,
-      )
+      .post(`${backendURL}/api/personality/save_recruitment_results/`, data)
       .then(() => {
         setResult('success');
       })
@@ -56,20 +57,16 @@ const ResultsMainPage = () => {
   } else {
     return (
       <StyledResultsPage>
-        <h1>{result === 'success' ? 'Thank You' : 'Error'}</h1>
+        {result === 'success' && (
+          <p style={{ fontSize: '1.8rem' }}>
+            Your answers have been processed and saved. The below is your
+            result, please copy the four letters below and paste them in the
+            field provided on the application form.
+          </p>
+        )}
+        <h1>{result === 'success' ? userType : 'Error'}</h1>
         {result === 'success' ? (
-          <>
-            <h1>{userType}</h1>
-            <p>
-              Your answers have been processed and saved. Below is an overview
-              of of your results based on the questionnaire. How does it compare
-              to your self-assessment?{' '}
-            </p>{' '}
-            <p>
-              Thank you for your time and energy completing this questionnaire.
-              We will be in touch shortly with your analysed results.
-            </p>
-          </>
+          <p className="type-text">"{personalityTypes[userType]}"</p>
         ) : (
           <p>{result}</p>
         )}
@@ -87,8 +84,9 @@ const StyledResultsPage = styled.div`
   align-items: center;
 
   h1 {
-    font-size: 5rem;
-    margin-bottom: 1rem;
+    font-size: 7rem;
+    margin-bottom: 2rem;
+    color: ${(props) => props.theme.darkgrey};
   }
 
   p {
@@ -98,6 +96,13 @@ const StyledResultsPage = styled.div`
     font-size: 2rem;
     color: ${(props) => props.theme.mediumgrey};
     text-align: center;
+    margin-bottom: 2rem;
+
+    &.type-text {
+      color: ${(props) => props.theme.orange};
+      line-height: 2.8rem;
+      width: 100%;
+    }
 
     a {
       color: ${(props) => props.theme.orange};

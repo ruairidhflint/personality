@@ -27,7 +27,7 @@ function App() {
         <AppContainer>
           <Switch>
             <Route exact path="/" component={TitlePage} />
-            <Route exact path="/name" component={NameEntry} />
+            <Route path="/name" component={NameEntry} />
             <Route path="/introduction" component={Introduction} />
             <Route path="/instructions" component={Instructions} />
             <Route path="/questions" component={QuestionContainer} />

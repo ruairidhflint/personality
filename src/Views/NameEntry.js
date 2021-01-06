@@ -1,7 +1,6 @@
 import { useState, useContext } from 'react';
 import { AnswersContext } from '../Context/AnswersContext';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 import { useSpring, animated } from 'react-spring';
 
 const NameEntry = (props) => {
@@ -30,8 +29,8 @@ const NameEntry = (props) => {
           onChange={(e) => setNameInput(e.target.value)}
           required
         />
+      <button type="submit">Continue</button>
       </form>
-      <Link to="/introduction">Continue</Link>
     </StyledNameEntry>
   );
 };
@@ -51,6 +50,9 @@ const StyledNameEntry = styled(animated.div)`
   form {
     width: 100%;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   input {
     width: 70%;
@@ -68,7 +70,9 @@ const StyledNameEntry = styled(animated.div)`
     text-align: center;
   }
 
-  a {
+  button {
+    border: none;
+    background-color:white;
     font-size: 2rem;
     color: ${(props) => props.theme.orange};
     margin-top: 1.5rem;

@@ -17,7 +17,7 @@ const SelfPerceptionIntroduction = () => {
         {testText.main.map((item, i) => {
           return (
             <p
-              key={i}
+              key={i + item}
               style={{
                 marginBottom: '1.5rem',
               }}
@@ -39,8 +39,8 @@ const SelfPerceptionIntroduction = () => {
         <div id="range-marks">
           {Array(6)
             .fill(null)
-            .map(() => {
-              return <span></span>;
+            .map((_, i) => {
+              return <span key={i * 99}></span>;
             })}
         </div>
       </StyledRangeSlider>

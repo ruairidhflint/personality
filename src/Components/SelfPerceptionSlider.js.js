@@ -50,9 +50,9 @@ const SelfPerceptionSlider = ({ quadrant, history, setPosition }) => {
           onChange={changeHandler}
         />
         <div id="range-marks">
-          {Array(6).fill(null).map(() => {
+          {Array(6).fill(null).map((_, i) => {
             return(
-              <span></span>
+              <span key={i}></span>
             )
           })}
         </div>

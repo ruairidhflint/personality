@@ -21,18 +21,19 @@ const NameEntry = (props) => {
     e.preventDefault();
     setLoading(true);
     axios
-      .get(`${backendURL}/api/personality/check_name`, { name: nameInput })
+      .post(`${backendURL}/api/personality/check_name`, { name: nameInput })
       .then((res) => {
         setLoading(false);
         if (res.data === 'Proceed') {
-          setUserAnswers((prev) => ({ ...prev, user_name: nameInput }));
+          setUserAnswers((prev) => ({ ...prev, name: nameInput }));
           props.history.push('/introduction');
         } else {
           setNameInput('');
           setError('Sorry this name has been used before');
         }
       })
-      .catch(() => {
+      .catch((err) => {
+        console.log(err);
         setLoading(false);
         setNameInput('');
         setError('Sorry this service is currently unavailabe');

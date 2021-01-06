@@ -25,30 +25,26 @@ const ResultsMainPage = () => {
       temperament_results: processed,
     };
 
-    console.log(data);
-
     if (processed === 'error' || type === 'error') {
       setResult('Not all answers were supplied');
       setLoading(false);
       return;
     }
 
-    // axios
-    //   .post(
-    //     `${backendURL}/api/personality/save_results/${userAnswers.user_id}`,
-    //     data,
-    //   )
-    //   .then(() => {
-    //     setResult('success');
-    //   })
-    //   .catch((err) => {
-    //     setResult(err.response.data.message);
-    //   })
-    //   .finally(() => {
-    //     setLoading(false);
-    //   });
-
-    setLoading(false);
+    axios
+      .post(
+        `${backendURL}/api/personality/save_recruitment_results/`,
+        data,
+      )
+      .then(() => {
+        setResult('success');
+      })
+      .catch((err) => {
+        setResult(err.response.data.message);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   }, [userAnswers]);
 
   if (loading) {

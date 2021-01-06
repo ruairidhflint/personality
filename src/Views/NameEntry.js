@@ -62,7 +62,7 @@ const NameEntry = (props) => {
           autoFocus
           value={nameInput}
           onChange={handleChange}
-          placeholder={error}
+          placeholder={error ? error : 'eg. John Smith'}
           required
         />
         <button type="submit">Continue</button>
@@ -97,8 +97,10 @@ const StyledNameEntry = styled(animated.div)`
     border-bottom: 1px solid
       ${(props) => (props.error ? '#ff4d70' : props.theme.mediumgrey)};
     outline: 0;
+    font-family: 'Quicksand', sans-serif;
+
     background: transparent;
-    color: ${(props) => props.theme.mediumgrey};
+    color: ${(props) => props.theme.darkgrey};
     font-size: 2.7rem;
     line-height: 4rem;
     transition: all 0.5s cubic-bezier(0.4, 0.25, 0.8, 0.3);
@@ -106,7 +108,7 @@ const StyledNameEntry = styled(animated.div)`
     text-align: center;
 
     ::placeholder {
-      color: #ff4d70;
+      color: ${(props) => (props.error ? '#ff4d70' : '#e6e5e5')};
       font-size: 1.8rem;
     }
   }

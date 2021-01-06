@@ -1,16 +1,42 @@
 import { useState, useContext } from 'react';
+import axios from 'axios';
 import { AnswersContext } from '../Context/AnswersContext';
 import styled from 'styled-components';
 import { useSpring, animated } from 'react-spring';
+import { backendURL } from '../Config/endpoint';
+import Spinner from '../Components/Spinner';
 
 const NameEntry = (props) => {
   const [nameInput, setNameInput] = useState('');
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
   const { setUserAnswers } = useContext(AnswersContext);
+
+  const handleChange = (e) => {
+    setError('');
+    setNameInput(e.target.value);
+  };
 
   const saveNameAndProgress = (e) => {
     e.preventDefault();
-    setUserAnswers((prev) => ({ ...prev, user_name: nameInput }));
-    props.history.push('/introduction');
+    setLoading(true);
+    axios
+      .get(`${backendURL}/api/personality/check_name`, { name: nameInput })
+      .then((res) => {
+        setLoading(false);
+        if (res.data === 'Proceed') {
+          setUserAnswers((prev) => ({ ...prev, user_name: nameInput }));
+          props.history.push('/introduction');
+        } else {
+          setNameInput('');
+          setError('Sorry this name has been used before');
+        }
+      })
+      .catch(() => {
+        setLoading(false);
+        setNameInput('');
+        setError('Sorry this service is currently unavailabe');
+      });
   };
 
   const effect = useSpring({
@@ -18,18 +44,28 @@ const NameEntry = (props) => {
     opacity: 1,
     from: { opacity: 0 },
   });
+
+  if (loading) {
+    return (
+      <StyledNameEntry>
+        <Spinner />
+      </StyledNameEntry>
+    );
+  }
+
   return (
-    <StyledNameEntry style={effect}>
+    <StyledNameEntry error={error} style={effect}>
       <h2>First, what's your name?</h2>
       <form onSubmit={saveNameAndProgress}>
         <input
           type="text"
           autoFocus
           value={nameInput}
-          onChange={(e) => setNameInput(e.target.value)}
+          onChange={handleChange}
+          placeholder={error}
           required
         />
-      <button type="submit">Continue</button>
+        <button type="submit">Continue</button>
       </form>
     </StyledNameEntry>
   );
@@ -58,23 +94,30 @@ const StyledNameEntry = styled(animated.div)`
     width: 70%;
     padding: 0.25rem 0;
     border: 0;
-    border-bottom: 1px solid ${(props) => props.theme.mediumgrey};
+    border-bottom: 1px solid
+      ${(props) => (props.error ? '#ff4d70' : props.theme.mediumgrey)};
     outline: 0;
     background: transparent;
     color: ${(props) => props.theme.mediumgrey};
-    font-size: 3rem;
+    font-size: 2.7rem;
     line-height: 4rem;
-    letter-spacing: 0.125rem;
     transition: all 0.5s cubic-bezier(0.4, 0.25, 0.8, 0.3);
     margin-bottom: 4.3rem;
     text-align: center;
+
+    ::placeholder {
+      color: #ff4d70;
+      font-size: 1.8rem;
+    }
   }
 
   button {
     border: none;
-    background-color:white;
+    background-color: white;
     font-size: 2rem;
-    color: ${(props) => props.theme.orange};
+    color: ${(props) =>
+      props.error ? props.theme.mediumgrey : props.theme.orange};
+    cursor: ${(props) => (props.error ? 'not-allowed' : 'pointer')};
     margin-top: 1.5rem;
     transition: opacity 0.2s ease-in-out;
     :hover {

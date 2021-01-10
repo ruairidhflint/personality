@@ -76,7 +76,7 @@ const StyledInstructionContent = styled(animated.div)`
     color: #424242;
     text-align: left;
 
-    @media(max-width: 800px){
+    @media (max-width: 800px) {
       margin-left: 2.5rem;
     }
   }

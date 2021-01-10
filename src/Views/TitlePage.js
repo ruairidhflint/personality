@@ -56,4 +56,3 @@ const StyledTitlePage = styled(animated.div)`
 `;
 
 export default TitlePage;
-

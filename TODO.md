@@ -5,5 +5,5 @@
 Danny
 
 - Create Airtable account to store database stuff
-- Rewatch and implement the airtable database and serverless functionality
-- 
+
+- Rewatch and implement the airtable database and serverless functionality- 

@@ -1,42 +1,19 @@
 import { useState, useContext } from 'react';
-import axios from 'axios';
 import { AnswersContext } from '../Context/AnswersContext';
 import styled from 'styled-components';
 import { useSpring, animated } from 'react-spring';
-import { backendURL } from '../Config/endpoint';
-import Spinner from '../Components/Spinner';
 
 const NameEntry = (props) => {
   const [nameInput, setNameInput] = useState('');
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
   const { setUserAnswers } = useContext(AnswersContext);
 
   const handleChange = (e) => {
-    setError('');
     setNameInput(e.target.value);
   };
 
   const saveNameAndProgress = (e) => {
-    e.preventDefault();
-    setLoading(true);
-    axios
-      .post(`${backendURL}/api/personality/check_name`, { name: nameInput })
-      .then((res) => {
-        setLoading(false);
-        if (res.data === 'Proceed') {
-          setUserAnswers((prev) => ({ ...prev, name: nameInput }));
-          props.history.push('/introduction');
-        } else {
-          setNameInput('');
-          setError('Sorry this name has been used before');
-        }
-      })
-      .catch(() => {
-        setLoading(false);
-        setNameInput('');
-        setError('Sorry this service is currently unavailabe');
-      });
+    setUserAnswers((prev) => ({ ...prev, name: nameInput }));
+    props.history.push('/introduction')
   };
 
   const effect = useSpring({
@@ -45,16 +22,8 @@ const NameEntry = (props) => {
     from: { opacity: 0 },
   });
 
-  if (loading) {
-    return (
-      <StyledNameEntry>
-        <Spinner />
-      </StyledNameEntry>
-    );
-  }
-
   return (
-    <StyledNameEntry error={error} style={effect}>
+    <StyledNameEntry style={effect}>
       <h2>First, what's your name?</h2>
       <form onSubmit={saveNameAndProgress}>
         <input
@@ -62,7 +31,6 @@ const NameEntry = (props) => {
           autoFocus
           value={nameInput}
           onChange={handleChange}
-          placeholder={error ? error : 'eg. John Smith'}
           required
         />
         <button type="submit">Continue</button>
@@ -82,7 +50,7 @@ const StyledNameEntry = styled(animated.div)`
   h2 {
     font-size: 3.5rem;
     margin-bottom: 4.3rem;
-    @media(max-width: 450px) {
+    @media (max-width: 450px) {
       font-size: 2.5rem;
     }
   }
@@ -97,8 +65,7 @@ const StyledNameEntry = styled(animated.div)`
     width: 70%;
     padding: 0.25rem 0;
     border: 0;
-    border-bottom: 1px solid
-      ${(props) => (props.error ? '#ff4d70' : props.theme.mediumgrey)};
+    border-bottom: 1px solid ${(props) => props.theme.mediumgrey};
     outline: 0;
     font-family: 'Quicksand', sans-serif;
 
@@ -111,7 +78,7 @@ const StyledNameEntry = styled(animated.div)`
     text-align: center;
 
     ::placeholder {
-      color: ${(props) => (props.error ? '#ff4d70' : '#e6e5e5')};
+      color: '#e6e5e5';
       font-size: 1.8rem;
     }
   }
@@ -120,9 +87,8 @@ const StyledNameEntry = styled(animated.div)`
     border: none;
     background-color: white;
     font-size: 2rem;
-    color: ${(props) =>
-      props.error ? props.theme.mediumgrey : props.theme.orange};
-    cursor: ${(props) => (props.error ? 'not-allowed' : 'pointer')};
+    color: ${(props) => props.theme.orange};
+    cursor: 'pointer';
     margin-top: 1.5rem;
     transition: opacity 0.2s ease-in-out;
     :hover {

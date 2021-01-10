@@ -13,7 +13,7 @@ const DannyResults = () => {
     },
     {
       dataField: 'fields.temperament_type',
-      text: 'Closest Fit',
+      text: 'Type',
     },
     {
       dataField: 'fields.extroversion',
@@ -49,19 +49,19 @@ const DannyResults = () => {
     },
     {
       dataField: 'fields.self_EI',
-      text: 'Self E/I',
+      text: 'Self EnI',
     },
     {
       dataField: 'fields.self_SN',
-      text: 'Self S/N',
+      text: 'Self SN',
     },
     {
       dataField: 'fields.self_TF',
-      text: 'Self T/F',
+      text: 'Self TF',
     },
     {
       dataField: 'fields.self_JP',
-      text: 'Self J/P',
+      text: 'Self JP',
     },
     // {
     //   dataField: 'created_at',

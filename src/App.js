@@ -15,7 +15,7 @@ import {
   SliderContainer,
   SelfPerceptionIntroduction,
   ErrorPage,
-  Recruitment,
+  DannyResults,
 } from './Views/index';
 
 function App() {
@@ -25,8 +25,9 @@ function App() {
     <ThemeProvider theme={Theme}>
       <AnswersContext.Provider value={{ userAnswers, setUserAnswers }}>
         <GlobalStyle />
-        <AppContainer>
-          <Switch>
+        <Switch>
+          <Route exact path="/danny_results" component={DannyResults} />
+          <AppContainer>
             <Route exact path="/" component={TitlePage} />
             <Route path="/name" component={NameEntry} />
             <Route path="/introduction" component={Introduction} />
@@ -38,10 +39,9 @@ function App() {
             />
             <Route path="/selfperception" component={SliderContainer} />
             <Route path="/results" component={ResultsMainPage} />
-            <Route path="/recruitment" component={Recruitment} />
             <Route component={ErrorPage} />
-          </Switch>
-        </AppContainer>
+          </AppContainer>
+        </Switch>
       </AnswersContext.Provider>
     </ThemeProvider>
   );

@@ -7,7 +7,7 @@ import SliderContainer from './SliderContainer';
 import SelfPerceptionIntroduction from './SelfPerceptionIntroduction';
 import ErrorPage from './ErrorPage';
 import NameEntry from './NameEntry';
-import Recruitment from './Recruitment';
+import DannyResults from './DannyResults';
 
 export {
   TitlePage,
@@ -19,5 +19,5 @@ export {
   SelfPerceptionIntroduction,
   ErrorPage,
   NameEntry,
-  Recruitment
+  DannyResults
 };

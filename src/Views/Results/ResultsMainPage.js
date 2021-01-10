@@ -7,8 +7,8 @@ import {
   processAnswers,
   determineTemperamentType,
 } from '../../Helpers/Helpers';
-import { backendURL } from '../../Config/endpoint';
 import { personalityTypes } from '../../Constants/personalityTypes';
+// import { dummyData } from '../../Constants/Questions';
 
 const ResultsMainPage = () => {
   const [loading, setLoading] = useState(true);
@@ -19,11 +19,23 @@ const ResultsMainPage = () => {
   useEffect(() => {
     const processed = processAnswers(userAnswers);
     const type = determineTemperamentType(processed);
-    setUserType(type);
+    console.log(processed)
+
     const data = {
       name: userAnswers.name,
       temperament_type: type,
-      temperament_results: processed,
+      extroversion: processed.E,
+      introversion: processed.I,
+      sensing: processed.S,
+      intuition: processed.N,
+      thinking: processed.T,
+      feeling: processed.F,
+      judging: processed.J,
+      perceiving: processed.P,
+      self_EI: processed.selfEI,
+      self_SN: processed.selfSN,
+      self_TF: processed.selfTF,
+      self_JP: processed.selfJP,
     };
 
     if (processed === 'error' || type === 'error') {
@@ -32,13 +44,15 @@ const ResultsMainPage = () => {
       return;
     }
 
-    setResult('success');
-    setLoading(false);
-
     axios
-      .post(`${backendURL}/api/personality/save_recruitment_results/`, data)
+      .post('/.netlify/functions/saveRecord', JSON.stringify(data), {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
       .then(() => {
         setResult('success');
+        setUserType(type);
       })
       .catch((err) => {
         setResult(err.response.data.message);
@@ -87,7 +101,7 @@ const StyledResultsPage = styled.div`
     font-size: 7rem;
     margin-bottom: 2rem;
     color: ${(props) => props.theme.darkgrey};
-    @media(max-width: 450px) {
+    @media (max-width: 450px) {
       font-size: 5rem;
     }
   }
@@ -105,9 +119,9 @@ const StyledResultsPage = styled.div`
       color: ${(props) => props.theme.orange};
       line-height: 2.8rem;
       width: 100%;
-      @media(max-width: 450px) {
-      width: 90%;
-    }
+      @media (max-width: 450px) {
+        width: 90%;
+      }
     }
 
     a {

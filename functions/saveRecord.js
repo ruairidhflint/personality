@@ -9,50 +9,18 @@ const base = Airtable.base(process.env.AIRTABLE_API_BASE);
 const table = base.table(process.env.AIRTABLE_API_TABLE);
 
 exports.handler = async (event) => {
+  console.log(event.httpMethod);
   try {
-    await table.create([
-      {
-        fields: {
-          name: 'Ruairidh Flint',
-          temperament_type: 'ENTJ',
-          extroversion: 7,
-          introversion: 3,
-          sensing: 5,
-          intuition: 15,
-          thinking: 15,
-          feeling: 5,
-          judging: 14,
-          perceiving: 6,
-          self_EI: 2,
-          self_SN: 4,
-          self_TF: 3,
-          self_JP: 2,
-        },
-      },
-      {
-        fields: {
-          name: 'Ruairidh Flint',
-          temperament_type: 'ENTJ',
-          extroversion: 7,
-          introversion: 3,
-          sensing: 5,
-          intuition: 15,
-          thinking: 15,
-          feeling: 5,
-          judging: 14,
-          perceiving: 6,
-          self_EI: 2,
-          self_SN: 4,
-          self_TF: 3,
-          self_JP: 2,
-        },
-      },
-    ]);
+    await table.create(
+      // [event.body]
+      JSON.parse(event.body)
+    );
     return {
       statusCode: 201,
-      body: JSON.stringify('Hello!')
-    }
+      body: JSON.stringify('Success'),
+    };
   } catch (err) {
+    console.log(err);
     return {
       statusCode: 500,
       body: JSON.stringify('goodbye! - ', err),

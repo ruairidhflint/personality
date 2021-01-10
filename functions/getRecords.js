@@ -9,6 +9,8 @@ const base = Airtable.base(process.env.AIRTABLE_API_BASE);
 const table = base.table(process.env.AIRTABLE_API_TABLE);
 
 exports.handler = async (event) => {
+  console.log(event);
+
   try {
     const records = await table.select({}).firstPage();
     return {

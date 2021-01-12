@@ -6,20 +6,19 @@ import { AnswersContext } from '../../Context/AnswersContext';
 import {
   processAnswers,
   determineTemperamentType,
+  determineSelfPerception,
 } from '../../Helpers/Helpers';
-import { personalityTypes } from '../../Constants/personalityTypes';
-// import { dummyData } from '../../Constants/Questions';
 
 const ResultsMainPage = () => {
   const [loading, setLoading] = useState(true);
   const [userType, setUserType] = useState('');
+  const [selfType, setSelfType] = useState('');
   const [result, setResult] = useState('');
   const { userAnswers } = useContext(AnswersContext);
 
   useEffect(() => {
     const processed = processAnswers(userAnswers);
     const type = determineTemperamentType(processed);
-    console.log(processed)
 
     const data = {
       name: userAnswers.name,
@@ -53,6 +52,14 @@ const ResultsMainPage = () => {
       .then(() => {
         setResult('success');
         setUserType(type);
+        setSelfType(
+          determineSelfPerception(
+            processed.selfEI,
+            processed.selfSN,
+            processed.selfTF,
+            processed.selfJP,
+          ),
+        );
       })
       .catch((err) => {
         setResult(err.response.data.message);
@@ -74,13 +81,23 @@ const ResultsMainPage = () => {
         {result === 'success' && (
           <p style={{ fontSize: '1.8rem' }}>
             Your answers have been processed and saved. The below is your
-            result, please copy the four letters below and paste them in the
-            field provided on the application form.
+            initial result that this is subject to small changes after
+            discussion with Danny.
           </p>
         )}
         <h1>{result === 'success' ? userType : 'Error'}</h1>
         {result === 'success' ? (
-          <p className="type-text">"{personalityTypes[userType]}"</p>
+          <>
+            <p>
+              Your self perception score was{' '}
+              <span className="type-text">{selfType}</span> How does it match up
+              to the score above?
+            </p>
+            <p style={{ fontSize: '1.8rem' }}>
+              Please contact Danny McGuigan at the earliest possible convenience
+              to arrange a discussion of your results.
+            </p>
+          </>
         ) : (
           <p>{result}</p>
         )}
@@ -115,7 +132,7 @@ const StyledResultsPage = styled.div`
     text-align: center;
     margin-bottom: 2rem;
 
-    &.type-text {
+    .type-text {
       color: ${(props) => props.theme.orange};
       line-height: 2.8rem;
       width: 100%;

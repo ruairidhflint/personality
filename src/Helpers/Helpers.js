@@ -17,10 +17,10 @@ export const processAnswers = (suppliedAnswers) => {
     F: 0,
     J: 0,
     P: 0,
-    selfEI,
-    selfSN,
-    selfTF,
-    selfJP,
+    selfEI: Number(selfEI),
+    selfSN: Number(selfSN),
+    selfTF: Number(selfTF),
+    selfJP: Number(selfJP),
   };
 
   questionGroups.EI.forEach((answer) => {
@@ -115,4 +115,34 @@ export const determineTemperamentType = (answers) => {
   }
 
   return dominantQuadrants.join('');
+};
+
+export const determineSelfPerception = (EI, SN, TF, JP) => {
+  const result = [];
+
+  if (EI <= 3) {
+    result.push('E');
+  } else {
+    result.push('I');
+  }
+
+  if (SN <= 3) {
+    result.push('S');
+  } else {
+    result.push('N');
+  }
+
+  if (TF <= 3) {
+    result.push('T');
+  } else {
+    result.push('F');
+  }
+
+  if (JP <= 3) {
+    result.push('J');
+  } else {
+    result.push('P');
+  }
+
+  return result.join('');
 };

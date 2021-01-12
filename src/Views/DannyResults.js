@@ -51,7 +51,7 @@ const DannyResults = () => {
     },
     {
       dataField: 'fields.self_EI',
-      text: 'Self EnI',
+      text: 'Self EI',
     },
     {
       dataField: 'fields.self_SN',
@@ -123,7 +123,7 @@ const StyledIntroductionContainer = styled.div`
   }
 
   table {
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
     text-align: left;
   }

@@ -2,7 +2,4 @@
     publish = "/build"
     command = "npm run build"
     functions = "/functions"
-[context.production]
-  publish = "output/"
-  command = "make publish"
   environment = { TEST_123 = "super secret", NODE_VERSION = "14.15.3" }

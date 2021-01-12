@@ -3,9 +3,11 @@ import styled from 'styled-components';
 import axios from 'axios';
 import BootstrapTable from 'react-bootstrap-table-next';
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
+import Spinner from '../Components/Spinner';
 
 const DannyResults = () => {
   const [applicants, setApplicants] = useState([]);
+  const [loading, setLoading] = useState(true);
   const columns = [
     {
       dataField: 'fields.name',
@@ -63,11 +65,6 @@ const DannyResults = () => {
       dataField: 'fields.self_JP',
       text: 'Self JP',
     },
-    // {
-    //   dataField: 'created_at',
-    //   text: 'Date',
-    //   formatter: (cell) => format(new Date(cell), 'MM/dd/yyyy'),
-    // },
   ];
 
   useEffect(() => {
@@ -75,12 +72,20 @@ const DannyResults = () => {
       .get('/.netlify/functions/getRecords')
       .then((res) => {
         setApplicants(res.data);
-        console.log(res.data);
       })
       .catch((err) => {
         console.log(err);
-      });
+      })
+      .finally(() => setLoading(false));
   }, []);
+
+  if (loading) {
+    return (
+      <StyledIntroductionContainer spinner={true}>
+        <Spinner />
+      </StyledIntroductionContainer>
+    );
+  }
   return (
     <StyledIntroductionContainer>
       <StyledIntroTitle>Results</StyledIntroTitle>
@@ -102,6 +107,7 @@ const DannyResults = () => {
 };
 
 const StyledIntroductionContainer = styled.div`
+  margin-top: ${(props) => (props.spinner ? '14rem' : '0rem')};
   display: flex;
   flex-direction: column;
   align-items: center;

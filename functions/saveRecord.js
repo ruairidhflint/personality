@@ -9,10 +9,8 @@ const base = Airtable.base(process.env.AIRTABLE_API_BASE);
 const table = base.table(process.env.AIRTABLE_API_TABLE);
 
 exports.handler = async (event) => {
-  console.log(event.httpMethod);
   try {
     await table.create(
-      // [event.body]
       JSON.parse(event.body)
     );
     return {

@@ -18,6 +18,38 @@ const Recruitment = () => {
       text: 'Type',
     },
     {
+      dataField: 'temperament_results.E',
+      text: 'E',
+    },
+    {
+      dataField: 'temperament_results.I',
+      text: 'I',
+    },
+    {
+      dataField: 'temperament_results.S',
+      text: 'S',
+    },
+    {
+      dataField: 'temperament_results.N',
+      text: 'N',
+    },
+    {
+      dataField: 'temperament_results.F',
+      text: 'F',
+    },
+    {
+      dataField: 'temperament_results.T',
+      text: 'T',
+    },
+    {
+      dataField: 'temperament_results.J',
+      text: 'J',
+    },
+    {
+      dataField: 'temperament_results.P',
+      text: 'P',
+    },
+    {
       dataField: 'created_at',
       text: 'Date',
       formatter: (cell) => format(new Date(cell), 'MM/dd/yyyy'),
@@ -28,6 +60,7 @@ const Recruitment = () => {
     axios
       .get(`${backendURL}/api/personality/all_applicants`)
       .then((res) => {
+        console.log(res.data);
         setApplicants(res.data);
       })
       .catch((err) => {
@@ -38,17 +71,11 @@ const Recruitment = () => {
     <StyledIntroductionContainer>
       <StyledIntroTitle>Recruitment</StyledIntroTitle>
       <p>
-        Below are all the current results submitted via the CP+R temperament
-        profiler by applicants. Once a recruitment drive has come to an end or
-        is temporarily paused, please contact Team Geek to remove old data or
-        applicants no longer involved in the process.
+        Below are all the current results submitted via the CP+R temperament profiler by applicants. Once a recruitment
+        drive has come to an end or is temporarily paused, please contact Team Geek to remove old data or applicants no
+        longer involved in the process.
       </p>
-      <BootstrapTable
-        keyField="_id"
-        data={applicants}
-        columns={columns}
-        trClassName="tr-row"
-      />
+      <BootstrapTable keyField="_id" data={applicants} columns={columns} trClassName="tr-row" />
     </StyledIntroductionContainer>
   );
 };
@@ -69,7 +96,7 @@ const StyledIntroductionContainer = styled.div`
   }
 
   table {
-    width: 90%;
+    width: 120%;
     margin: 0 auto;
     text-align: left;
   }

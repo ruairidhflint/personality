@@ -1,5 +1,5 @@
-require('dotenv').config();
-const Airtable = require('airtable');
+require("dotenv").config();
+const Airtable = require("airtable");
 
 Airtable.configure({
   apiKey: process.env.AIRTABLE_API_KEY,
@@ -8,9 +8,14 @@ Airtable.configure({
 const base = Airtable.base(process.env.AIRTABLE_API_BASE);
 const table = base.table(process.env.AIRTABLE_API_TABLE);
 
-exports.handler = async (event) => {
-    try {
-    const records = await table.select({}).firstPage();
+exports.handler = async () => {
+  try {
+    const records = await table
+      .select({
+        sort: [{ field: "created_at", direction: "desc" }],
+        maxRecords: 50,
+      })
+      .firstPage();
     return {
       statusCode: 200,
       body: JSON.stringify(records),

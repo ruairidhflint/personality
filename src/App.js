@@ -15,7 +15,6 @@ import {
   SliderContainer,
   SelfPerceptionIntroduction,
   ErrorPage,
-  Recruitment,
 } from './Views/index';
 
 function App() {
@@ -38,7 +37,6 @@ function App() {
             />
             <Route path="/selfperception" component={SliderContainer} />
             <Route path="/results" component={ResultsMainPage} />
-            <Route path="/recruitment" component={Recruitment} />
             <Route component={ErrorPage} />
           </Switch>
         </AppContainer>
